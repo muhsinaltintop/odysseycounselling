@@ -102,7 +102,7 @@ export function HomepageSections() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center rounded-xl bg-primary-soft px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-px hover:bg-primary focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                className="inline-flex items-center justify-center rounded-xl border border-primary/15 bg-surface px-6 py-3 text-sm font-medium text-primary transition-all duration-300 hover:-translate-y-px hover:bg-surface-soft focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
               >
                 Our approach
               </Link>
@@ -265,23 +265,23 @@ export function HomepageSections() {
       </Container>
 
       <Container as="section" className="app-section border-t border-border-soft">
-        <div className="rounded-[3rem] border border-primary/20 bg-primary-soft px-8 py-12 text-surface md:px-14 md:py-16">
-          <p className="text-xs tracking-[0.18em] text-surface/85 uppercase">CTA</p>
-          <h2 className="mt-4 max-w-3xl text-3xl leading-tight text-surface md:text-5xl">Begin your journey with a gentle first step.</h2>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-surface/85 md:text-lg">
+        <div className="rounded-[3rem] border border-border bg-surface-muted px-8 py-12 md:px-14 md:py-16">
+          <p className="text-xs tracking-[0.18em] text-text-muted uppercase">CTA</p>
+          <h2 className="mt-4 max-w-3xl text-3xl leading-tight text-primary md:text-5xl">Begin your journey with a gentle first step.</h2>
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-text-soft md:text-lg">
             If you are unsure where to begin, you can book an initial 15-minute consultation or send a confidential
             message first.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-xl bg-surface px-6 py-3 text-sm font-medium text-primary transition-all duration-300 hover:-translate-y-px hover:bg-surface-soft focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-surface/70 focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+              className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-px hover:bg-primary-soft focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted"
             >
               Book initial consultation
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-xl border border-surface/60 bg-primary px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-primary/85 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-surface/70 focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+              className="inline-flex items-center justify-center rounded-xl border border-border bg-surface px-6 py-3 text-sm font-medium text-primary transition-colors hover:bg-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted"
             >
               Contact us
             </Link>

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { HomepageSections } from "@/components/sections/homepage-sections";
 
 export const metadata: Metadata = {
-  title: "Turkish & English Counselling in the UK",
+  title: "Professional Turkish-Speaking Therapy UK",
   description:
     "Odyssey Counselling provides confidential bilingual therapy in Turkish and English, with calm professional support for adults in the UK.",
   alternates: {

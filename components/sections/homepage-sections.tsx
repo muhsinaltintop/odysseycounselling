@@ -102,7 +102,7 @@ export function HomepageSections() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center rounded-xl border border-primary/15 bg-surface px-6 py-3 text-sm font-medium text-primary transition-all duration-300 hover:-translate-y-px hover:bg-surface-soft focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-px hover:bg-primary-soft focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
               >
                 Our approach
               </Link>

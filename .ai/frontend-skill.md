@@ -54,6 +54,7 @@ Breakpoints should enhance rhythm, not add visual noise.
 - Form labels always visible; placeholders are supplementary only.
 - Error messaging must be specific and calm in tone.
 - Respect reduced motion preferences.
+- Never pair dark backgrounds with dark text (or light backgrounds with low-contrast light text); explicitly verify contrast in Hero and CTA blocks before shipping.
 
 ## 7) Performance Requirements
 - Server Components first.

@@ -195,7 +195,7 @@ export function HomepageSections() {
           <div className="md:col-span-5">
             <div className="overflow-hidden rounded-[2rem] border border-border/70">
               <Image
-                src="https://drive.google.com/uc?export=view&id=1eEz-3k0afupJFKbwVXBtVTC0tnW--ncO"
+                src="https://canva.link/d58j01hkjp9x7gk"
                 alt="Professional portrait of Psychologist İmran Altıntop."
                 className="h-full min-h-96 w-full object-cover"
                 width={720}

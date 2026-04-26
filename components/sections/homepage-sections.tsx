@@ -195,7 +195,7 @@ export function HomepageSections() {
           <div className="md:col-span-5">
             <div className="overflow-hidden rounded-[2rem] border border-border/70">
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvMBG_b4D2jkGAGRGMr-Vg1i3V__YAFqsOzX9Il94uS36d8xKiMO4ZkmmXmwu4viyxeu1hNkZ_mknx01bwN3OPC4R3VoretGW6B5tkYVBNjGezweaGFFqHY3kVIddjUQhxmWJr1VR-ItW_rQnrRrjR-pVzVFBWDfzm1_nXjdwnvPm1yCabzkqdXukZAR_GonkMO9rRlIf2s-4ZPhhEOIU4lAG5baApfN2GYnce-yXnbRQYdFPsL8TeuYxrva_BvRcM6tsJWTl7l1g"
+                src="https://drive.google.com/uc?export=view&id=1eEz-3k0afupJFKbwVXBtVTC0tnW--ncO"
                 alt="Professional portrait of Psychologist İmran Altıntop."
                 className="h-full min-h-96 w-full object-cover"
                 width={720}

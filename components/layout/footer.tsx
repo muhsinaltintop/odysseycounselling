@@ -1,8 +1,11 @@
 import Link from "next/link";
+import { type Locale } from "@/i18n/config";
 
 import { Container } from "@/components/ui/container";
 
-export function Footer() {
+export function Footer({ locale = "en" }: { locale?: Locale }) {
+  const t = locale === "tr";
+  const withLocale = (href: string) => `/${locale}${href}`;
   return (
     <footer className="border-t border-border bg-surface-soft">
       <Container as="div" className="grid gap-10 py-12 md:grid-cols-[1.2fr_1fr_1fr] md:py-16">
@@ -20,17 +23,17 @@ export function Footer() {
           <h2 className="text-xs tracking-[0.18em] text-text-muted uppercase">Navigate</h2>
           <ul className="space-y-3 text-sm text-text-soft">
             <li>
-              <Link className="transition-colors hover:text-text" href="/about">
-                About
+              <Link className="transition-colors hover:text-text" href={withLocale("/about")}>
+                {t ? "Hakkında" : "About"}
               </Link>
             </li>
             <li>
-              <Link className="transition-colors hover:text-text" href="/services">
-                Services
+              <Link className="transition-colors hover:text-text" href={withLocale("/services")}>
+                {t ? "Hizmetler" : "Services"}
               </Link>
             </li>
             <li>
-              <Link className="transition-colors hover:text-text" href="/faq">
+              <Link className="transition-colors hover:text-text" href={withLocale("/faq")}>
                 FAQ
               </Link>
             </li>
@@ -46,10 +49,10 @@ export function Footer() {
             reply with clear next steps.
           </p>
           <Link
-            href="/contact"
+            href={withLocale("/contact")}
             className="inline-flex rounded-xl border border-primary/15 bg-surface px-4 py-2 text-sm text-primary transition-all duration-300 hover:-translate-y-px hover:bg-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-soft"
           >
-            Send a confidential enquiry
+            {t ? "Gizli başvuru gönder" : "Send a confidential enquiry"}
           </Link>
         </section>
       </Container>

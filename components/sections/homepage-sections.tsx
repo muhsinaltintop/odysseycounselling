@@ -87,30 +87,32 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-export function HomepageSections() {
+export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
+  const t = locale === "tr";
+  const withLocale = (href: string) => `/${locale}${href}`;
   return (
     <>
       <Container as="section" className="app-section">
         <div className="grid gap-10 rounded-[3rem] border border-border bg-gradient-to-br from-background to-surface-soft px-8 py-10 md:grid-cols-12 md:items-center md:px-12 md:py-14">
           <div className="md:col-span-7">
-            <p className="text-xs tracking-[0.18em] text-text-muted uppercase">Culturally focused therapy</p>
-            <h1 className="mt-5 max-w-3xl text-5xl leading-tight md:text-7xl">Support in your own language.</h1>
+            <p className="text-xs tracking-[0.18em] text-text-muted uppercase">{t ? "Kültürel duyarlılığa sahip terapi" : "Culturally focused therapy"}</p>
+            <h1 className="mt-5 max-w-3xl text-5xl leading-tight md:text-7xl">{t ? "Kendi dilinizde destek." : "Support in your own language."}</h1>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-text-soft md:text-xl">
               Therapy, group support, and migrant wellbeing services for Turkish-speaking people in the UK. A calm
               clinical space designed around dignity, privacy, and emotional safety.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
-                href="/services"
+                href={withLocale("/services")}
                 className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-px hover:bg-primary-soft focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
               >
-                Our approach
+                {t ? "Yaklaşımımız" : "Our approach"}
               </Link>
               <Link
-                href="/therapist"
+                href={withLocale("/therapist")}
                 className="inline-flex items-center justify-center rounded-xl border border-border bg-surface px-6 py-3 text-sm font-medium text-primary transition-all duration-300 hover:-translate-y-px hover:bg-surface-soft focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
               >
-                Meet İmran
+                {t ? "İmran ile tanışın" : "Meet İmran"}
               </Link>
             </div>
           </div>
@@ -172,7 +174,7 @@ export function HomepageSections() {
             <p className="text-xs tracking-[0.18em] text-text-muted uppercase">Services preview</p>
             <h2 className="mt-4 text-3xl md:text-5xl">Pathways to wellbeing</h2>
           </div>
-          <Link href="/services" className="text-sm font-medium text-primary underline decoration-border decoration-2 underline-offset-6">
+          <Link href={withLocale("/services")} className="text-sm font-medium text-primary underline decoration-border decoration-2 underline-offset-6">
             Explore all services
           </Link>
         </div>
@@ -274,13 +276,13 @@ export function HomepageSections() {
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
-              href="/contact"
+              href={withLocale("/contact")}
               className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-px hover:bg-primary-soft focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted"
             >
               Book initial consultation
             </Link>
             <Link
-              href="/contact"
+              href={withLocale("/contact")}
               className="inline-flex items-center justify-center rounded-xl border border-border bg-surface px-6 py-3 text-sm font-medium text-primary transition-colors hover:bg-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted"
             >
               Contact us

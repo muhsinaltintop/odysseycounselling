@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 import { type Locale } from "@/i18n/config";
 
 import { Container } from "@/components/ui/container";
@@ -11,10 +15,22 @@ const primaryNavItems = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
+function getLocalizedPath(pathname: string, nextLocale: Locale) {
+  const segments = pathname.split("/").filter(Boolean);
+  if (segments.length === 0) {
+    return `/${nextLocale}`;
+  }
+
+  segments[0] = nextLocale;
+  return `/${segments.join("/")}`;
+}
+
 export function Navbar({ locale = "en" }: { locale?: Locale }) {
+  const pathname = usePathname();
   const t = locale === "tr";
   const withLocale = (href: string) => `/${locale}${href}`;
-  const switchLocale = locale === "en" ? "tr" : "en";
+  const switchLocale: Locale = locale === "en" ? "tr" : "en";
+  const switchLocalePath = getLocalizedPath(pathname, switchLocale);
   const navLabels: Record<(typeof primaryNavItems)[number]["href"], string> = t
     ? {
         "/about": "Hakkında",
@@ -42,7 +58,7 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
           Odyssey Counselling
         </Link>
         <Link
-          href={`/${switchLocale}`}
+          href={switchLocalePath}
           className="rounded-lg border border-border px-3 py-1 text-xs text-text-soft uppercase transition-colors hover:text-text focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35"
           aria-label={t ? "Dili İngilizceye değiştir" : "Switch language to Turkish"}
         >

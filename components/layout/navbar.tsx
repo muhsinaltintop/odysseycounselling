@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { type Locale } from "@/i18n/config";
 
 import { Container } from "@/components/ui/container";
 
@@ -10,16 +11,42 @@ const primaryNavItems = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
-export function Navbar() {
+export function Navbar({ locale = "en" }: { locale?: Locale }) {
+  const t = locale === "tr";
+  const withLocale = (href: string) => `/${locale}${href}`;
+  const switchLocale = locale === "en" ? "tr" : "en";
+  const navLabels: Record<(typeof primaryNavItems)[number]["href"], string> = t
+    ? {
+        "/about": "Hakkında",
+        "/services": "Hizmetler",
+        "/therapist": "Terapist",
+        "/faq": "SSS",
+        "/contact": "İletişim",
+      }
+    : {
+        "/about": "About",
+        "/services": "Services",
+        "/therapist": "Therapist",
+        "/faq": "FAQ",
+        "/contact": "Contact",
+      };
+
   return (
     <header className="sticky top-0 z-50 border-b border-border/90 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <Container as="div" className="flex min-h-18 items-center justify-between gap-6 py-4">
         <Link
-          href="/"
+          href={`/${locale}`}
           className="inline-flex items-center gap-2 text-sm font-medium tracking-[0.14em] text-primary uppercase transition-colors hover:text-text focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           <span className="h-2 w-2 rounded-full bg-accent-sage" aria-hidden />
           Odyssey Counselling
+        </Link>
+        <Link
+          href={`/${switchLocale}`}
+          className="rounded-lg border border-border px-3 py-1 text-xs text-text-soft uppercase transition-colors hover:text-text focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35"
+          aria-label={t ? "Dili İngilizceye değiştir" : "Switch language to Turkish"}
+        >
+          {locale === "en" ? "TR" : "EN"}
         </Link>
 
         <nav aria-label="Primary" className="hidden md:block">
@@ -27,10 +54,10 @@ export function Navbar() {
             {primaryNavItems.map((item) => (
               <li key={item.href}>
                 <Link
-                  href={item.href}
+                  href={withLocale(item.href)}
                   className="text-sm text-text-soft transition-colors hover:text-text focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
-                  {item.label}
+                  {navLabels[item.href]}
                 </Link>
               </li>
             ))}
@@ -38,10 +65,10 @@ export function Navbar() {
         </nav>
 
         <Link
-          href="/contact"
+          href={withLocale("/contact")}
           className="inline-flex items-center justify-center rounded-xl border border-primary/15 bg-surface px-4 py-2 text-sm text-primary transition-all duration-300 hover:-translate-y-px hover:border-primary/25 hover:bg-surface-soft focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
-          Confidential Enquiry
+          {t ? "Gizli Başvuru" : "Confidential Enquiry"}
         </Link>
       </Container>
       <Container as="nav" aria-label="Primary mobile" className="pb-3 md:hidden">
@@ -49,10 +76,10 @@ export function Navbar() {
           {primaryNavItems.map((item) => (
             <li key={item.href}>
               <Link
-                href={item.href}
+                href={withLocale(item.href)}
                 className="text-sm text-text-soft transition-colors hover:text-text focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                {item.label}
+                {navLabels[item.href]}
               </Link>
             </li>
           ))}

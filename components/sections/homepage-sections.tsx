@@ -117,7 +117,7 @@ export function HomepageSections() {
           <div className="md:col-span-5">
             <div className="overflow-hidden rounded-[2rem] border border-border/70 bg-surface shadow-[0_10px_40px_-15px_rgba(15,23,42,0.08)]">
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjNqNS-3GCMG86F0Vz6YfRAICSYm7ftA0t_40QuOjT4MrFqH9trqy6Fq4n3cbmQ_TrhqAWg6Puu25OyCB1Q2E7c2-doEvRT-D3-ZsjPIgbmI0P3jHDEVCGv2a5nfSXSE_JaT4A_JT6cNDeSJb9E7oQCDCy0s2lZaor2Nb-G_2lO5OUQJ8Uw25t39KPINatBZPZs5YcNHddxNsca-pMxNNXiiicRrdAGWdDUNm0NfHC5do3uUOM87gcswFjsInpxi__cZu-G0yydB4"
+                src="/imran.png"
                 alt="Minimalist therapist office interior with sage green walls and soft morning light."
                 className="h-full min-h-96 w-full object-cover"
                 width={720}
@@ -195,7 +195,7 @@ export function HomepageSections() {
           <div className="md:col-span-5">
             <div className="overflow-hidden rounded-[2rem] border border-border/70">
               <Image
-                src="https://canva.link/d58j01hkjp9x7gk"
+                src="/imran.png"
                 alt="Professional portrait of Psychologist İmran Altıntop."
                 className="h-full min-h-96 w-full object-cover"
                 width={720}

@@ -16,6 +16,98 @@ type LanguageBenefit = {
   description: string;
 };
 
+
+
+type WhyOdysseyItem = {
+  title: string;
+  description: string;
+};
+
+const whyOdysseyContent: Record<"en" | "tr", { label: string; heading: string; items: WhyOdysseyItem[] }> = {
+  en: {
+    label: "Why Odyssey Consulting?",
+    heading: "Expert support rooted in trust, science, and lived context.",
+    items: [
+      {
+        title: "Expertise and Experience",
+        description:
+          "Odyssey Consulting offers services with a team of experts possessing years of academic knowledge and professional experience in the fields of developmental psychology and adult psychology. Effective and professional support is provided tailored to the specific needs of each client.",
+      },
+      {
+        title: "Specialization in the Field of Migration and Refugees",
+        description:
+          "We focus on the psychological, social, and emotional challenges faced by immigrant and refugee individuals. We offer expert support on integration processes, identity conflicts, trauma, and belonging.",
+      },
+      {
+        title: "Scientific and Contemporary Approach",
+        description:
+          "We use scientifically based methods in all our consulting processes and closely follow current research and developments. This allows us to offer our clients reliable and effective solutions.",
+      },
+      {
+        title: "Holistic Perspective",
+        description:
+          "We evaluate individuals not only based on the problems they face, but also considering their family structure, social environment, education, work life, and cultural conditions. This approach leads to more lasting and sustainable results.",
+      },
+      {
+        title: "Corporate Consulting Experience",
+        description:
+          "In addition to individual counseling, we also offer training, project development, psychosocial support programs, and consulting services to institutions.",
+      },
+      {
+        title: "Trust and Empathy",
+        description:
+          "We build trusting, respectful, and understanding relationships with our clients. We value each individual's life experience and provide a safe space where they can express themselves comfortably.",
+      },
+      {
+        title: "Socially Beneficial Service",
+        description:
+          "Our goal is not only to provide individual support, but also to contribute to the creation of healthier, stronger, and more resilient communities.",
+      },
+    ],
+  },
+  tr: {
+    label: "Neden Odyssey Danışmanlık?",
+    heading: "Güven, bilim ve yaşam deneyimine dayalı uzman destek.",
+    items: [
+      {
+        title: "Uzmanlık ve Deneyim",
+        description:
+          "Odyssey Danışmanlık, gelişim psikolojisi ve yetişkin psikolojisi alanlarında uzun yıllara dayanan akademik bilgi ve profesyonel deneyime sahip uzman kadrosuyla hizmet sunar. Her danışanın ihtiyaçlarına özel, etkili ve profesyonel destek sağlanır.",
+      },
+      {
+        title: "Göçmen ve Sığınmacı Alanında Uzmanlaşma",
+        description:
+          "Göçmen ve sığınmacı bireylerin karşılaştığı psikolojik, sosyal ve duygusal zorluklara odaklanırız. Uyum süreci, kimlik çatışmaları, travma ve aidiyet konularında uzman destek sunarız.",
+      },
+      {
+        title: "Bilimsel ve Güncel Yaklaşım",
+        description:
+          "Tüm danışmanlık süreçlerinde bilimsel temelli yöntemler kullanır, güncel araştırmaları ve gelişmeleri yakından takip ederiz. Böylece danışanlarımıza güvenilir ve etkili çözümler sunarız.",
+      },
+      {
+        title: "Bütüncül Bakış Açısı",
+        description:
+          "Bireyi yalnızca yaşadığı sorunlarla değil; aile yapısı, sosyal çevresi, eğitim hayatı, iş yaşamı ve kültürel koşullarıyla birlikte değerlendiririz. Bu yaklaşım, daha kalıcı ve sürdürülebilir sonuçlar sağlar.",
+      },
+      {
+        title: "Kurumsal Danışmanlık Deneyimi",
+        description:
+          "Bireysel danışmanlığın yanı sıra kurumlara yönelik eğitim, proje geliştirme, psikososyal destek programları ve danışmanlık hizmetleri de sunmaktayız.",
+      },
+      {
+        title: "Güven ve Empati",
+        description:
+          "Danışanlarımızla güvene dayalı, saygılı ve anlayışlı bir ilişki kurarız. Her bireyin yaşam deneyimine değer verir, kendini rahat ifade edebileceği güvenli bir alan sunarız.",
+      },
+      {
+        title: "Toplumsal Fayda Odaklı Hizmet",
+        description:
+          "Amacımız yalnızca bireysel destek sağlamak değil, aynı zamanda daha sağlıklı, güçlü ve dayanıklı toplumların oluşmasına katkı sunmaktır.",
+      },
+    ],
+  },
+};
+
 type Testimonial = {
   quote: string;
   person: string;
@@ -131,40 +223,17 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
       </Container>
 
       <Container as="section" className="app-section border-t border-border-soft">
-        <div className="grid gap-12 md:grid-cols-2 md:items-center">
-          <div>
-            <p className="text-xs tracking-[0.18em] text-text-muted uppercase">Trust statement</p>
-            <h2 className="mt-4 text-3xl leading-tight md:text-5xl">A space for human warmth and clinical excellence.</h2>
-            <div className="mt-6 space-y-4 text-base leading-relaxed text-text-soft md:text-lg">
-              <p>
-                Odyssey Counselling is built on the belief that emotional wellbeing is deeply connected to language,
-                identity, and cultural context.
-              </p>
-              <p>
-                Our work is confidential, ethically grounded, and tailored for Turkish-speaking clients navigating life
-                in the UK.
-              </p>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <article className="rounded-2xl border border-border bg-surface p-5">
-              <p className="text-4xl md:text-5xl">12+</p>
-              <p className="mt-2 text-xs tracking-[0.18em] text-text-muted uppercase">Years experience</p>
+        <div className="mb-10 max-w-4xl">
+          <p className="text-xs tracking-[0.18em] text-text-muted uppercase">{whyOdysseyContent[locale].label}</p>
+          <h2 className="mt-4 text-3xl leading-tight md:text-5xl">{whyOdysseyContent[locale].heading}</h2>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2">
+          {whyOdysseyContent[locale].items.map((item) => (
+            <article key={item.title} className="rounded-2xl border border-border bg-surface p-6 md:p-7">
+              <h3 className="text-2xl md:text-3xl">{item.title}</h3>
+              <p className="mt-4 text-base leading-relaxed text-text-soft">{item.description}</p>
             </article>
-            <article className="rounded-2xl border border-border bg-surface-soft p-5">
-              <p className="text-4xl md:text-5xl">500+</p>
-              <p className="mt-2 text-xs tracking-[0.18em] text-text-muted uppercase">Lives supported</p>
-            </article>
-            <article className="col-span-2 overflow-hidden rounded-2xl border border-border bg-surface-muted">
-              <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqkWSnr9W5zW0t-up7EA7JSjywqpa7ncai1eQXBiFLdb8v8VZug930Y5AUcivvbSZHbtV3rxMx4olWUlufdO5BpW9c3lpTdlGxYmWUHT_RomofmXOZfHgnANs-qDjfJNYX6VbFlzN6D2maxoRTH3LdhqySHbAIss_pf5M0JzrTq9MM6qFBzFZFam-bp05xOiHXVof0gjfAo7_bJNZWzNZd2F9urtz6jPPaW3YVZJ_ioetsghjC214LoSc0sF7em0h0h9KTQq-aU04"
-                alt="Abstract soft green brushstrokes artwork."
-                className="h-52 w-full object-cover"
-                width={800}
-                height={420}
-              />
-            </article>
-          </div>
+          ))}
         </div>
       </Container>
 

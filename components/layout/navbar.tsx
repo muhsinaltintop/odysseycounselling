@@ -11,7 +11,7 @@ const primaryNavItems = [
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
   { href: "/therapist", label: "Therapist" },
-  { href: "/faq", label: "FAQ" },
+  { href: "/odyssey-app", label: "Odyssey App" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
@@ -36,14 +36,14 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
         "/about": "Hakkında",
         "/services": "Hizmetler",
         "/therapist": "Terapist",
-        "/faq": "SSS",
+        "/odyssey-app": "Odyssey Uygulaması",
         "/contact": "İletişim",
       }
     : {
         "/about": "About",
         "/services": "Services",
         "/therapist": "Therapist",
-        "/faq": "FAQ",
+        "/odyssey-app": "Odyssey App",
         "/contact": "Contact",
       };
 

@@ -34,7 +34,7 @@ export function Footer({ locale = "en" }: { locale?: Locale }) {
             </li>
             <li>
               <Link className="transition-colors hover:text-text" href={withLocale("/faq")}>
-                FAQ
+                Odyssey App
               </Link>
             </li>
           </ul>

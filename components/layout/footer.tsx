@@ -13,7 +13,7 @@ export function Footer({ locale = "en" }: { locale?: Locale }) {
         <section aria-labelledby="footer-brand">
           <Image
             id="footer-brand"
-            src="/odyssey-counselling.png"
+            src="/odyssey-logo.png"
             alt="Odyssey Counselling"
             width={220}
             height={40}

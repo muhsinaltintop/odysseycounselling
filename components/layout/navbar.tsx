@@ -56,7 +56,7 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
           className="inline-flex shrink-0 items-center gap-2 text-sm font-medium tracking-[0.14em] text-primary uppercase transition-colors hover:text-text focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           <Image
-            src="/odyssey-counselling.png"
+            src="/odyssey-logo.png"
             alt="Odyssey Counselling"
             width={180}
             height={32}

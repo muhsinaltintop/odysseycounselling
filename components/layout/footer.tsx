@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { type Locale } from "@/i18n/config";
 
@@ -10,9 +11,14 @@ export function Footer({ locale = "en" }: { locale?: Locale }) {
     <footer className="border-t border-border bg-surface-soft">
       <Container as="div" className="grid gap-10 py-12 md:grid-cols-[1.2fr_1fr_1fr] md:py-16">
         <section aria-labelledby="footer-brand">
-          <h2 id="footer-brand" className="font-heading text-2xl text-primary">
-            Odyssey Counselling
-          </h2>
+          <Image
+            id="footer-brand"
+            src="/odyssey-logo.png"
+            alt="Odyssey Counselling"
+            width={413}
+            height={75}
+            className="h-[3.75rem] w-auto"
+          />
           <p className="mt-4 max-w-prose text-sm leading-relaxed text-text-soft md:text-base">
             Bilingual Turkish-English counselling delivered with calm, clinical
             professionalism and deep respect for confidentiality.

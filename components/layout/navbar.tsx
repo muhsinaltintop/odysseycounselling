@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -54,8 +55,14 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
           href={`/${locale}`}
           className="inline-flex shrink-0 items-center gap-2 text-sm font-medium tracking-[0.14em] text-primary uppercase transition-colors hover:text-text focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
-          <span className="h-2 w-2 rounded-full bg-accent-sage" aria-hidden />
-          Odyssey Counselling
+          <Image
+            src="/odyssey-logo.png"
+            alt="Odyssey Counselling"
+            width={338}
+            height={60}
+            className="h-[3.25rem] w-auto"
+            priority
+          />
         </Link>
 
         <nav aria-label="Primary" className="hidden md:block">

@@ -134,7 +134,6 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
       <Container as="section" className="app-section border-t border-border-soft">
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
           <div>
-            <p className="text-xs tracking-[0.18em] text-text-muted uppercase">Trust statement</p>
             <h2 className="mt-4 text-3xl leading-tight md:text-5xl">
               {t
                 ? "Kültürel sıcakığın ve klinik profesyonelliğin buluştuğu bir alan."
@@ -178,7 +177,6 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
       <Container as="section" className="app-section border-t border-border-soft">
         <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-xs tracking-[0.18em] text-text-muted uppercase">Services preview</p>
             <h2 className="mt-4 text-3xl md:text-5xl">Pathways to wellbeing</h2>
           </div>
           <Link href={withLocale("/services")} className="text-sm font-medium text-primary underline decoration-border decoration-2 underline-offset-6">
@@ -275,7 +273,6 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
 
       <Container as="section" className="app-section border-t border-border-soft">
         <div className="rounded-[3rem] border border-border bg-surface-muted px-8 py-12 md:px-14 md:py-16">
-          <p className="text-xs tracking-[0.18em] text-text-muted uppercase">CTA</p>
           <h2 className="mt-4 max-w-3xl text-3xl leading-tight text-primary md:text-5xl">Begin your journey with a gentle first step.</h2>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-text-soft md:text-lg">
             If you are unsure where to begin, you can book an initial 15-minute consultation or send a confidential

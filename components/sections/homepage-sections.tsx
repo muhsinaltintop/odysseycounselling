@@ -203,7 +203,7 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
             <div className="overflow-hidden rounded-[2rem] border border-border/70">
               <Image
                 src="/imran.png"
-                alt="Professional portrait of Psychologist İmran Altıntop."
+                alt={t ? "Psikolog İmran Altıntop'un profesyonel portresi." : "Professional portrait of Psychologist İmran Altıntop."}
                 className="h-full min-h-96 w-full object-cover"
                 width={720}
                 height={900}
@@ -211,26 +211,28 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
             </div>
           </div>
           <div className="md:col-span-7">
-            <p className="text-xs tracking-[0.18em] text-text-muted uppercase">Meet therapist</p>
-            <h2 className="mt-4 text-3xl md:text-5xl">Meet Psychologist İmran Altıntop</h2>
+            <p className="text-xs tracking-[0.18em] text-text-muted uppercase">{t ? "Psikolog ile tanışın" : "Meet therapist"}</p>
+            <h2 className="mt-4 text-3xl md:text-5xl">{t ? "Psikolog İmran Altıntop ile Tanışın" : "Meet Psychologist İmran Altıntop"}</h2>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-text-soft md:text-lg">
               <p>
-                With over a decade of clinical experience, İmran offers integrative therapy adapted to each person’s
-                emotional and practical needs.
+                {t
+                  ? "İmran Altıntop, göçmenlerle, topluluklarla ve uluslararası wellbeing projeleriyle geçen 10 yılı aşkın deneyimiyle; klinik uzmanlığı göç deneyiminin gerçekliğiyle birleştiren kültürel olarak duyarlı bir terapi yaklaşımı sunmaktadır."
+                  : "With over a decade of experience working with migrants, communities, and international wellbeing projects, İmran offers culturally informed therapy shaped by both clinical expertise and lived migrant experience."}
               </p>
               <p>
-                As a first-generation migrant, she understands dual identity pressures and provides professional care
-                with empathy, structure, and clear boundaries.
+                {t
+                  ? "İngiltere’de yaşayan birinci nesil bir göçmen olarak, kültürler arasında hayat kurmanın duygusal zorluklarını yakından bilir ve güvenli, yapılandırılmış ve duygusal olarak destekleyici bir terapi alanı oluşturmayı hedefler."
+                  : "As a first-generation migrant living in the UK, he understands the emotional complexity of building life between cultures and provides a calm, structured, and emotionally safe therapeutic space."}
               </p>
             </div>
             <div className="mt-8 grid gap-4 border-t border-border pt-6 sm:grid-cols-2">
               <div>
                 <p className="text-sm font-medium text-primary">MSc Clinical Psychology</p>
-                <p className="mt-1 text-sm text-text-muted">University of London</p>
+                <p className="mt-1 text-sm text-text-muted">{t ? "Ege Üniversitesi" : "Ege University"}</p>
               </div>
               <div>
-                <p className="text-sm font-medium text-primary">BACP Accredited</p>
-                <p className="mt-1 text-sm text-text-muted">MBACP (Accred)</p>
+                <p className="text-sm font-medium text-primary">{t ? "Üyelik" : "Member of"}</p>
+                <p className="mt-1 text-sm text-text-muted">The British Psychological Society</p>
               </div>
             </div>
           </div>

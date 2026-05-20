@@ -164,7 +164,7 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
             </article>
             <article className="col-span-2 overflow-hidden rounded-2xl border border-border bg-surface-muted">
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqkWSnr9W5zW0t-up7EA7JSjywqpa7ncai1eQXBiFLdb8v8VZug930Y5AUcivvbSZHbtV3rxMx4olWUlufdO5BpW9c3lpTdlGxYmWUHT_RomofmXOZfHgnANs-qDjfJNYX6VbFlzN6D2maxoRTH3LdhqySHbAIss_pf5M0JzrTq9MM6qFBzFZFam-bp05xOiHXVof0gjfAo7_bJNZWzNZd2F9urtz6jPPaW3YVZJ_ioetsghjC214LoSc0sF7em0h0h9KTQq-aU04"
+                src="/tea.png"
                 alt="Abstract soft green brushstrokes artwork."
                 className="h-52 w-full object-cover"
                 width={800}

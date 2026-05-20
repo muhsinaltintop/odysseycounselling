@@ -95,11 +95,12 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
       <Container as="section" className="app-section">
         <div className="grid gap-10 rounded-[3rem] border border-border bg-gradient-to-br from-background to-surface-soft px-8 py-10 md:grid-cols-12 md:items-center md:px-12 md:py-14">
           <div className="md:col-span-7">
-            <p className="text-xs tracking-[0.18em] text-text-muted uppercase">{t ? "Kültürel duyarlılığa sahip terapi" : "Culturally focused therapy"}</p>
-            <h1 className="mt-5 max-w-3xl text-5xl leading-tight md:text-7xl">{t ? "Kendi dilinizde destek." : "Support in your own language."}</h1>
+            <p className="text-xs tracking-[0.18em] text-text-muted uppercase">{t ? "Göç yolculuğunda anlaşılmaya alan açmak" : "Therapy Across Borders, Grounded in Understanding"}</p>
+            <h1 className="mt-5 max-w-3xl text-5xl leading-tight md:text-7xl">{t ? "Göç yolculuğunda anlaşılmaya alan açmak" : "Therapy Across Borders, Grounded in Understanding"}</h1>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-text-soft md:text-xl">
-              Therapy, group support, and migrant wellbeing services for Turkish-speaking people in the UK. A calm
-              clinical space designed around dignity, privacy, and emotional safety.
+              {t
+                ? "İngiltere merkezli Psikolog İmran Altıntop, dünyanın farklı ülkelerinde yaşayan göçmen Türklere yönelik kültürel olarak duyarlı terapi ve wellbeing desteği sunmaktadır. Yaklaşık 10 yıla yaklaşan deneyimiyle İngiltere, Almanya, Hollanda ve Amerika başta olmak üzere farklı ülkelerde bireyler, topluluklar, dernekler ve kurumlarla çalışan Odyssey Counselling; klinik profesyonelliği göç deneyiminin gerçekliğiyle birleştiren güvenli ve sakin bir alan oluşturur. Bireysel terapi, grup desteği ve topluluk odaklı wellbeing çalışmaları; aidiyet, kimlik, duygusal dayanıklılık ve kültürler arası yaşamın getirdiği zorluklara destek olmayı amaçlar."
+                : "UK-based Psychologist İmran Altıntop provides culturally informed therapy and wellbeing support for Turkish-speaking migrants around the world. Drawing on nearly a decade of experience working with individuals, communities, NGOs, and organisations across countries including the UK, Germany, the Netherlands, and the United States, Odyssey Counselling offers a calm and emotionally safe space grounded in both clinical professionalism and lived migrant experience. Individual therapy, group support, and community wellbeing projects are designed to help people navigate identity, belonging, emotional resilience, and life across cultures."}
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link

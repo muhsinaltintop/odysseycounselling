@@ -114,6 +114,15 @@ a {
   text-decoration: none;
 }
 
+/* Guard against inherited/link-state color overrides on dark primary CTAs. */
+:is(a, button):is(.bg-primary, .bg-primary-soft, .btn-primary) {
+  color: var(--color-on-primary);
+}
+
+:is(a, button):is(.bg-primary, .bg-primary-soft, .btn-primary):is(:hover, :focus-visible, :active, :visited) {
+  color: var(--color-on-primary);
+}
+
 @utility btn-base {
   @apply inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-medium transition-all duration-300 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2;
 }

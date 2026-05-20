@@ -15,9 +15,9 @@ export function Footer({ locale = "en" }: { locale?: Locale }) {
             id="footer-brand"
             src="/odyssey-logo.png"
             alt="Odyssey Counselling"
-            width={330}
-            height={60}
-            className="h-12 w-auto"
+            width={413}
+            height={75}
+            className="h-[3.75rem] w-auto"
           />
           <p className="mt-4 max-w-prose text-sm leading-relaxed text-text-soft md:text-base">
             Bilingual Turkish-English counselling delivered with calm, clinical

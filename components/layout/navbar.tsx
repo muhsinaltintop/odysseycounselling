@@ -58,9 +58,9 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
           <Image
             src="/odyssey-logo.png"
             alt="Odyssey Counselling"
-            width={180}
-            height={32}
-            className="h-7 w-auto"
+            width={270}
+            height={48}
+            className="h-[2.625rem] w-auto"
             priority
           />
         </Link>

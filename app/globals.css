@@ -16,6 +16,8 @@
   --color-border-soft: #eef2ef;
   --color-success: #7aa67d;
   --color-error: #ba1a1a;
+  --color-on-primary: #ffffff;
+  --color-on-secondary: #161d1b;
 
   --font-inter: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-noto-serif: "Noto Serif", Georgia, Cambria, "Times New Roman", serif;
@@ -41,6 +43,8 @@
   --color-border-soft: var(--color-border-soft);
   --color-success: var(--color-success);
   --color-error: var(--color-error);
+  --color-on-primary: var(--color-on-primary);
+  --color-on-secondary: var(--color-on-secondary);
 
   --font-sans: var(--font-inter);
   --font-heading: var(--font-noto-serif);
@@ -108,6 +112,22 @@ p {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+@utility btn-base {
+  @apply inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-medium transition-all duration-300 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2;
+}
+
+@utility btn-primary {
+  @apply btn-base bg-primary text-on-primary hover:-translate-y-px hover:bg-primary-soft hover:text-on-primary focus-visible:ring-offset-surface;
+}
+
+@utility btn-secondary {
+  @apply btn-base border border-border bg-surface text-on-secondary hover:-translate-y-px hover:bg-surface-soft hover:text-on-secondary focus-visible:ring-offset-surface;
+}
+
+@utility btn-ghost {
+  @apply btn-base border border-transparent bg-transparent text-primary hover:bg-surface-soft hover:text-primary focus-visible:ring-offset-surface;
 }
 
 :focus-visible {

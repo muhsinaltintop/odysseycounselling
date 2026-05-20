@@ -104,13 +104,13 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href={withLocale("/services")}
-                className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-px hover:bg-primary-soft focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                className="btn-primary"
               >
                 {t ? "Yaklaşımımız" : "Our approach"}
               </Link>
               <Link
                 href={withLocale("/therapist")}
-                className="inline-flex items-center justify-center rounded-xl border border-border bg-surface px-6 py-3 text-sm font-medium text-primary transition-all duration-300 hover:-translate-y-px hover:bg-surface-soft focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                className="btn-secondary"
               >
                 {t ? "İmran ile tanışın" : "Meet İmran"}
               </Link>
@@ -277,13 +277,13 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
               href={withLocale("/contact")}
-              className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-px hover:bg-primary-soft focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted"
+              className="btn-primary focus-visible:ring-offset-surface-muted"
             >
               Book initial consultation
             </Link>
             <Link
               href={withLocale("/contact")}
-              className="inline-flex items-center justify-center rounded-xl border border-border bg-surface px-6 py-3 text-sm font-medium text-primary transition-colors hover:bg-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted"
+              className="btn-secondary hover:bg-background focus-visible:ring-offset-surface-muted"
             >
               Contact us
             </Link>

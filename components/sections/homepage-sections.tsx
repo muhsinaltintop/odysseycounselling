@@ -135,30 +135,36 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
           <div>
             <p className="text-xs tracking-[0.18em] text-text-muted uppercase">Trust statement</p>
-            <h2 className="mt-4 text-3xl leading-tight md:text-5xl">A space for human warmth and clinical excellence.</h2>
+            <h2 className="mt-4 text-3xl leading-tight md:text-5xl">
+              {t
+                ? "Kültürel sıcakığın ve klinik profesyonelliğin buluştuğu bir alan."
+                : "A space for human warmth and clinical excellence."}
+            </h2>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-text-soft md:text-lg">
               <p>
-                Odyssey Counselling is built on the belief that emotional wellbeing is deeply connected to language,
-                identity, and cultural context.
+                {t
+                  ? "Odyssey Counselling, dünyanın farklı ülkelerinde yaşayan göçmen Türklere kültürel olarak duyarlı psikolojik destek sunar."
+                  : "Odyssey Counselling provides culturally informed psychological support for Turkish-speaking migrants around the world."}
               </p>
               <p>
-                Our work is confidential, ethically grounded, and tailored for Turkish-speaking clients navigating life
-                in the UK.
+                {t
+                  ? "Psikolog İmran Altıntop liderliğinde yürütülen yaklaşımımız; klinik uzmanlığı göç deneyiminin gerçekliğiyle birleştirerek bireyler, topluluklar ve kurumlar için güvenli, gizliliğe önem veren ve duygusal olarak destekleyici bir alan oluşturur."
+                  : "Led by Psychologist İmran Altıntop, our approach combines clinical professionalism with lived migrant experience — offering a safe, confidential, and emotionally grounded space for individuals, communities, and organisations navigating life across cultures."}
               </p>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <article className="rounded-2xl border border-border bg-surface p-5">
               <p className="text-4xl md:text-5xl">12+</p>
-              <p className="mt-2 text-xs tracking-[0.18em] text-text-muted uppercase">Years experience</p>
+              <p className="mt-2 text-xs tracking-[0.18em] text-text-muted uppercase">{t ? "Yıllık deneyim" : "Years experience"}</p>
             </article>
             <article className="rounded-2xl border border-border bg-surface-soft p-5">
               <p className="text-4xl md:text-5xl">500+</p>
-              <p className="mt-2 text-xs tracking-[0.18em] text-text-muted uppercase">Lives supported</p>
+              <p className="mt-2 text-xs tracking-[0.18em] text-text-muted uppercase">{t ? "Desteklenen yaşam" : "Lives supported"}</p>
             </article>
             <article className="col-span-2 overflow-hidden rounded-2xl border border-border bg-surface-muted">
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqkWSnr9W5zW0t-up7EA7JSjywqpa7ncai1eQXBiFLdb8v8VZug930Y5AUcivvbSZHbtV3rxMx4olWUlufdO5BpW9c3lpTdlGxYmWUHT_RomofmXOZfHgnANs-qDjfJNYX6VbFlzN6D2maxoRTH3LdhqySHbAIss_pf5M0JzrTq9MM6qFBzFZFam-bp05xOiHXVof0gjfAo7_bJNZWzNZd2F9urtz6jPPaW3YVZJ_ioetsghjC214LoSc0sF7em0h0h9KTQq-aU04"
+                src="/tea.png"
                 alt="Abstract soft green brushstrokes artwork."
                 className="h-52 w-full object-cover"
                 width={800}

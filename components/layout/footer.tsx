@@ -51,14 +51,13 @@ export function Footer({ locale = "en" }: { locale?: Locale }) {
             Contact
           </h2>
           <p className="text-sm leading-relaxed text-text-soft">
-            For a gentle first step, send a confidential enquiry and we will
-            reply with clear next steps.
+            For a gentle first step, contact us and we will reply with clear next steps.
           </p>
           <Link
             href={withLocale("/contact")}
             className="inline-flex rounded-xl border border-primary/15 bg-surface px-4 py-2 text-sm text-primary transition-all duration-300 hover:-translate-y-px hover:bg-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-soft"
           >
-            {t ? "Gizli başvuru gönder" : "Send a confidential enquiry"}
+            Contact Us
           </Link>
         </section>
       </Container>

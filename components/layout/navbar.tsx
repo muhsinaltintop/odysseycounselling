@@ -85,7 +85,7 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
             href={withLocale("/contact")}
             className="inline-flex items-center justify-center rounded-xl border border-primary/15 bg-surface px-4 py-2 text-sm text-primary transition-all duration-300 hover:-translate-y-px hover:border-primary/25 hover:bg-surface-soft focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
-            {t ? "Gizli Başvuru" : "Confidential Enquiry"}
+            {t ? "Randevu Al" : "Book an Appointment"}
           </Link>
 
           <Link

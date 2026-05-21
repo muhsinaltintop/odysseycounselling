@@ -198,45 +198,51 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
       </Container>
 
       <Container as="section" className="app-section border-t border-border-soft">
-        <div className="grid gap-10 rounded-[2rem] border border-border bg-surface-soft p-8 md:grid-cols-12 md:p-12">
-          <div className="md:col-span-5">
-            <div className="overflow-hidden rounded-[2rem] border border-border/70">
-              <Image
-                src="/imran.png"
-                alt={t ? "Psikolog İmran Altıntop'un profesyonel portresi." : "Professional portrait of Psychologist İmran Altıntop."}
-                className="h-full min-h-96 w-full object-cover"
-                width={720}
-                height={900}
-              />
-            </div>
-          </div>
-          <div className="md:col-span-7">
-            <p className="text-xs tracking-[0.18em] text-text-muted uppercase">{t ? "Psikolog ile tanışın" : "Meet therapist"}</p>
-            <h2 className="mt-4 text-3xl md:text-5xl">{t ? "Psikolog İmran Altıntop ile Tanışın" : "Meet Psychologist İmran Altıntop"}</h2>
-            <div className="mt-6 space-y-4 text-base leading-relaxed text-text-soft md:text-lg">
-              <p>
-                {t
-                  ? "İmran Altıntop, göçmenlerle, topluluklarla ve uluslararası wellbeing projeleriyle geçen 10 yılı aşkın deneyimiyle; klinik uzmanlığı göç deneyiminin gerçekliğiyle birleştiren kültürel olarak duyarlı bir terapi yaklaşımı sunmaktadır."
-                  : "With over a decade of experience working with migrants, communities, and international wellbeing projects, İmran offers culturally informed therapy shaped by both clinical expertise and lived migrant experience."}
-              </p>
-              <p>
-                {t
-                  ? "İngiltere’de yaşayan birinci nesil bir göçmen olarak, kültürler arasında hayat kurmanın duygusal zorluklarını yakından bilir ve güvenli, yapılandırılmış ve duygusal olarak destekleyici bir terapi alanı oluşturmayı hedefler."
-                  : "As a first-generation migrant living in the UK, he understands the emotional complexity of building life between cultures and provides a calm, structured, and emotionally safe therapeutic space."}
-              </p>
-            </div>
-            <div className="mt-8 grid gap-4 border-t border-border pt-6 sm:grid-cols-2">
-              <div>
-                <p className="text-sm font-medium text-primary">MSc Clinical Psychology</p>
-                <p className="mt-1 text-sm text-text-muted">{t ? "Ege Üniversitesi" : "Ege University"}</p>
-              </div>
-              <div>
-                <p className="text-sm font-medium text-primary">{t ? "Üyelik" : "Member of"}</p>
-                <p className="mt-1 text-sm text-text-muted">The British Psychological Society</p>
+        <Link
+          href={withLocale("/therapist")}
+          className="block rounded-[2rem] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          aria-label={t ? "Psikolog İmran Altıntop profilini aç" : "Open Psychologist İmran Altıntop profile"}
+        >
+          <div className="grid gap-10 rounded-[2rem] border border-border bg-surface-soft p-8 transition-colors hover:bg-surface md:grid-cols-12 md:p-12">
+            <div className="md:col-span-5">
+              <div className="overflow-hidden rounded-[2rem] border border-border/70">
+                <Image
+                  src="/imran.png"
+                  alt={t ? "Psikolog İmran Altıntop'un profesyonel portresi." : "Professional portrait of Psychologist İmran Altıntop."}
+                  className="h-full min-h-96 w-full object-cover"
+                  width={720}
+                  height={900}
+                />
               </div>
             </div>
+            <div className="md:col-span-7">
+              <p className="text-xs tracking-[0.18em] text-text-muted uppercase">{t ? "Psikolog ile tanışın" : "Meet therapist"}</p>
+              <h2 className="mt-4 text-3xl md:text-5xl">{t ? "Psikolog İmran Altıntop ile Tanışın" : "Meet Psychologist İmran Altıntop"}</h2>
+              <div className="mt-6 space-y-4 text-base leading-relaxed text-text-soft md:text-lg">
+                <p>
+                  {t
+                    ? "İmran Altıntop, göçmenlerle, topluluklarla ve uluslararası wellbeing projeleriyle geçen 10 yılı aşkın deneyimiyle; klinik uzmanlığı göç deneyiminin gerçekliğiyle birleştiren kültürel olarak duyarlı bir terapi yaklaşımı sunmaktadır."
+                    : "With over a decade of experience working with migrants, communities, and international wellbeing projects, İmran offers culturally informed therapy shaped by both clinical expertise and lived migrant experience."}
+                </p>
+                <p>
+                  {t
+                    ? "İngiltere’de yaşayan birinci nesil bir göçmen olarak, kültürler arasında hayat kurmanın duygusal zorluklarını yakından bilir ve güvenli, yapılandırılmış ve duygusal olarak destekleyici bir terapi alanı oluşturmayı hedefler."
+                    : "As a first-generation migrant living in the UK, she understands the emotional complexity of building life between cultures and provides a calm, structured, and emotionally safe therapeutic space."}
+                </p>
+              </div>
+              <div className="mt-8 grid gap-4 border-t border-border pt-6 sm:grid-cols-2">
+                <div>
+                  <p className="text-sm font-medium text-primary">MSc Clinical Psychology</p>
+                  <p className="mt-1 text-sm text-text-muted">{t ? "Ege Üniversitesi" : "Ege University"}</p>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-primary">{t ? "Üyelik" : "Member of"}</p>
+                  <p className="mt-1 text-sm text-text-muted">The British Psychological Society</p>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </Link>
       </Container>
 
       <Container as="section" className="app-section border-t border-border-soft">
@@ -277,8 +283,7 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
         <div className="rounded-[3rem] border border-border bg-surface-muted px-8 py-12 md:px-14 md:py-16">
           <h2 className="mt-4 max-w-3xl text-3xl leading-tight text-primary md:text-5xl">Begin your journey with a gentle first step.</h2>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-text-soft md:text-lg">
-            If you are unsure where to begin, you can book an initial 15-minute consultation or send a confidential
-            message first.
+            If you are unsure where to begin, you can book an initial 15-minute consultation or contact us first.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link

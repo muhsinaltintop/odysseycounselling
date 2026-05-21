@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { type Locale } from "@/i18n/config";
 
@@ -44,12 +45,23 @@ export function TherapistSections({ locale }: { locale: Locale }) {
         </header>
 
         <article className="mt-12 rounded-[2rem] border border-border bg-surface px-6 py-8 md:px-10 md:py-12">
-          <div className="space-y-6">
+          <div className="grid gap-8 md:grid-cols-12 md:items-start">
+            <div className="overflow-hidden rounded-[1.5rem] border border-border/70 md:col-span-4">
+              <Image
+                src="/imran.png"
+                alt={locale === "tr" ? "Psikolog İmran Altıntop'un profesyonel portresi." : "Professional portrait of Psychologist İmran Altıntop."}
+                width={720}
+                height={900}
+                className="h-full min-h-80 w-full object-cover"
+              />
+            </div>
+            <div className="space-y-6 md:col-span-8">
             {copy.paragraphs.map((paragraph) => (
               <p key={paragraph} className="text-base leading-relaxed text-text md:text-lg">
                 {paragraph}
               </p>
             ))}
+            </div>
           </div>
         </article>
       </Container>

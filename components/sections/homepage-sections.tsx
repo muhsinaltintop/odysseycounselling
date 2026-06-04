@@ -383,22 +383,26 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
 
       <Container as="section" className="app-section border-t border-border-soft">
         <div className="rounded-[3rem] border border-border bg-surface-muted px-8 py-12 md:px-14 md:py-16">
-          <h2 className="mt-4 max-w-3xl text-3xl leading-tight text-primary md:text-5xl">Begin your journey with a gentle first step.</h2>
+          <h2 className="mt-4 max-w-3xl text-3xl leading-tight text-primary md:text-5xl">
+            {t ? "Yolculuğunuza sakin bir ilk adımla başlayın." : "Begin your journey with a gentle first step."}
+          </h2>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-text-soft md:text-lg">
-            If you are unsure where to begin, you can book an initial 15-minute consultation or contact us first.
+            {t
+              ? "Nereden başlayacağınızdan emin değilseniz, 15 dakikalık bir ön görüşme planlayabilir ya da önce bizimle iletişime geçebilirsiniz."
+              : "If you are unsure where to begin, you can book an initial 15-minute consultation or contact us first."}
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
               href={withLocale("/contact")}
               className="btn-primary focus-visible:ring-offset-surface-muted"
             >
-              Book initial consultation
+              {t ? "Ön görüşme planlayın" : "Book initial consultation"}
             </Link>
             <Link
               href={withLocale("/contact")}
               className="btn-secondary hover:bg-background focus-visible:ring-offset-surface-muted"
             >
-              Contact us
+              {t ? "İletişime geçin" : "Contact us"}
             </Link>
           </div>
         </div>

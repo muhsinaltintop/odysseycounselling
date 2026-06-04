@@ -11,6 +11,13 @@ type ServiceCard = {
   imageAlt: string;
 };
 
+type LanguageContent = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  benefits: LanguageBenefit[];
+};
+
 type LanguageBenefit = {
   title: string;
   description: string;
@@ -51,23 +58,54 @@ const serviceCards: ServiceCard[] = [
   },
 ];
 
-const languageBenefits: LanguageBenefit[] = [
-  {
-    title: "Untranslatable nuance",
+const languageContent: Record<"en" | "tr", LanguageContent> = {
+  en: {
+    eyebrow: "Why native language therapy matters",
+    title: "Language is the home of the inner world.",
     description:
-      "Certain feelings and lived experiences can only be expressed through familiar language and cultural context.",
+      "When therapy happens in your native language, nuance, memory, and emotional precision become easier to access.",
+    benefits: [
+      {
+        title: "Untranslatable nuance",
+        description:
+          "Certain feelings and lived experiences can only be expressed through familiar language and cultural context.",
+      },
+      {
+        title: "Reduced cognitive load",
+        description:
+          "When you are not translating your emotions, more energy remains for reflection, regulation, and healing work.",
+      },
+      {
+        title: "Cultural safety",
+        description:
+          "You can discuss migration, family expectations, and identity complexity without repeatedly explaining context.",
+      },
+    ],
   },
-  {
-    title: "Reduced cognitive load",
+  tr: {
+    eyebrow: "Ana dilde terapi neden önemlidir",
+    title: "Dil, iç dünyanın evidir.",
     description:
-      "When you are not translating your emotions, more energy remains for reflection, regulation, and healing work.",
+      "Terapi ana dilinizde gerçekleştiğinde nüansa, belleğe ve duygusal hassasiyete erişmek kolaylaşır.",
+    benefits: [
+      {
+        title: "Çevrilemeyen nüanslar",
+        description:
+          "Bazı duygular ve yaşam deneyimleri yalnızca tanıdık bir dil ve kültürel bağlam içinde ifade edilebilir.",
+      },
+      {
+        title: "Azalan zihinsel yük",
+        description:
+          "Duygularınızı tercüme etmek zorunda kalmadığınızda; düşünme, düzenleme ve iyileşme çalışması için daha fazla enerji kalır.",
+      },
+      {
+        title: "Kültürel güvenlik",
+        description:
+          "Göç, aile beklentileri ve kimliğin karmaşıklığı üzerine konuşurken bağlamı tekrar tekrar açıklamak zorunda kalmazsınız.",
+      },
+    ],
   },
-  {
-    title: "Cultural safety",
-    description:
-      "You can discuss migration, family expectations, and identity complexity without repeatedly explaining context.",
-  },
-];
+};
 
 const testimonials: Testimonial[] = [
   {
@@ -89,6 +127,7 @@ const testimonials: Testimonial[] = [
 
 export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
   const t = locale === "tr";
+  const language = languageContent[locale];
   const withLocale = (href: string) => `/${locale}${href}`;
   return (
     <>
@@ -247,15 +286,12 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
 
       <Container as="section" className="app-section border-t border-border-soft">
         <div className="mb-12 max-w-3xl">
-          <p className="text-xs tracking-[0.18em] text-text-muted uppercase">Why native language therapy matters</p>
-          <h2 className="mt-4 text-3xl md:text-5xl">Language is the home of the inner world.</h2>
-          <p className="mt-5 text-base leading-relaxed text-text-soft md:text-lg">
-            When therapy happens in your native language, nuance, memory, and emotional precision become easier to
-            access.
-          </p>
+          <p className="text-xs tracking-[0.18em] text-text-muted uppercase">{language.eyebrow}</p>
+          <h2 className="mt-4 text-3xl md:text-5xl">{language.title}</h2>
+          <p className="mt-5 text-base leading-relaxed text-text-soft md:text-lg">{language.description}</p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
-          {languageBenefits.map((benefit) => (
+          {language.benefits.map((benefit) => (
             <article key={benefit.title} className="rounded-2xl border border-border bg-surface px-6 py-8">
               <h3 className="text-2xl md:text-3xl">{benefit.title}</h3>
               <p className="mt-4 text-base leading-relaxed text-text-soft">{benefit.description}</p>

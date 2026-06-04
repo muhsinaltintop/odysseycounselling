@@ -9,11 +9,11 @@ import { type Locale } from "@/i18n/config";
 import { Container } from "@/components/ui/container";
 
 const primaryNavItems = [
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/therapist", label: "Therapist" },
-  { href: "/faq", label: "Odyssey App" },
-  { href: "/contact", label: "Contact" },
+  { href: "/about" },
+  { href: "/services" },
+  { href: "/therapist" },
+  { href: "/faq" },
+  { href: "/contact" },
 ] as const;
 
 function getLocalizedPath(pathname: string, nextLocale: Locale) {
@@ -34,7 +34,7 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
   const switchLocalePath = getLocalizedPath(pathname, switchLocale);
   const navLabels: Record<(typeof primaryNavItems)[number]["href"], string> = t
     ? {
-        "/about": "Hakkında",
+        "/about": "Hakkımızda",
         "/services": "Hizmetler",
         "/therapist": "Terapist",
         "/faq": "Odyssey App",
@@ -65,7 +65,7 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
           />
         </Link>
 
-        <nav aria-label="Primary" className="hidden md:block">
+        <nav aria-label={t ? "Ana menü" : "Primary"} className="hidden md:block">
           <ul className="flex items-center gap-8">
             {primaryNavItems.map((item) => (
               <li key={item.href}>
@@ -98,7 +98,11 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
         </div>
       </Container>
 
-      <Container as="nav" aria-label="Primary mobile" className="pb-3 md:hidden">
+      <Container
+        as="nav"
+        aria-label={t ? "Mobil ana menü" : "Primary mobile"}
+        className="pb-3 md:hidden"
+      >
         <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-border-soft pt-3">
           {primaryNavItems.map((item) => (
             <li key={item.href}>

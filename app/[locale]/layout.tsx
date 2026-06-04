@@ -1,6 +1,11 @@
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
-import { defaultLocale, isLocale } from "@/i18n/config";
+import { type Locale, defaultLocale, isLocale } from "@/i18n/config";
+
+const skipLinkText: Record<Locale, string> = {
+  en: "Skip to main content",
+  tr: "Ana içeriğe geç",
+};
 
 export default async function LocaleLayout({
   children,
@@ -18,7 +23,7 @@ export default async function LocaleLayout({
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:rounded-xl focus:bg-surface focus:px-4 focus:py-2 focus:text-primary focus:ring-2 focus:ring-primary/40"
       >
-        Skip to main content
+        {skipLinkText[activeLocale]}
       </a>
       <Navbar locale={activeLocale} />
       <main id="main-content" className="flex-1">

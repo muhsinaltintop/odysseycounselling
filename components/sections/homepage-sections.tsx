@@ -71,7 +71,7 @@ const serviceCardsByLocale: Record<"en" | "tr", ServiceCard[]> = {
       imageAlt: "Bir topluluk odasında birlikte konuşan farklı geçmişlerden bir grup insan.",
     },
     {
-      title: "Göçmen Wellbeing",
+      title: "Göçmen Danışmanlığı",
       description:
         "Yer değiştirme stresi, iki kültürlü kimlik zorlanması ve duygusal uyum için hedeflenmiş destek.",
       format: "Projeler ve atölyeler",

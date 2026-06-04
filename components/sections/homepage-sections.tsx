@@ -28,6 +28,12 @@ type Testimonial = {
   person: string;
 };
 
+type TestimonialContent = {
+  eyebrow: string;
+  title: string;
+  testimonials: Testimonial[];
+};
+
 const serviceCardsByLocale: Record<"en" | "tr", ServiceCard[]> = {
   en: [
     {
@@ -138,27 +144,55 @@ const languageContent: Record<"en" | "tr", LanguageContent> = {
   },
 };
 
-const testimonials: Testimonial[] = [
-  {
-    quote:
-      "Finding a therapist who understood the pressure of being a migrant in London changed everything for me.",
-    person: "Ayşe K., Individual Client",
+const testimonialContent: Record<"en" | "tr", TestimonialContent> = {
+  en: {
+    eyebrow: "Testimonials",
+    title: "Voices from our community",
+    testimonials: [
+      {
+        quote:
+          "Finding a therapist who understood the pressure of being a migrant in London changed everything for me.",
+        person: "Ayşe K., Individual Client",
+      },
+      {
+        quote:
+          "The group sessions gave me a sense of community I did not realize I was missing while navigating two worlds.",
+        person: "Mehmet S., Group Participant",
+      },
+      {
+        quote:
+          "İmran's professional yet warm approach helped me through a difficult transition with clarity and care.",
+        person: "Elif D., Online Therapy",
+      },
+    ],
   },
-  {
-    quote:
-      "The group sessions gave me a sense of community I did not realize I was missing while navigating two worlds.",
-    person: "Mehmet S., Group Participant",
+  tr: {
+    eyebrow: "Danışan yorumları",
+    title: "Topluluğumuzdan sesler",
+    testimonials: [
+      {
+        quote:
+          "Londra’da göçmen olmanın baskısını anlayan bir terapist bulmak benim için her şeyi değiştirdi.",
+        person: "Ayşe K., Bireysel Danışan",
+      },
+      {
+        quote:
+          "Grup seansları, iki dünya arasında yol alırken eksikliğini fark etmediğim bir topluluk hissi verdi.",
+        person: "Mehmet S., Grup Katılımcısı",
+      },
+      {
+        quote:
+          "İmran’ın profesyonel ama sıcak yaklaşımı, zorlu bir geçiş döneminden açıklık ve özenle geçmeme yardımcı oldu.",
+        person: "Elif D., Online Terapi",
+      },
+    ],
   },
-  {
-    quote:
-      "İmran's professional yet warm approach helped me through a difficult transition with clarity and care.",
-    person: "Elif D., Online Therapy",
-  },
-];
+};
 
 export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
   const t = locale === "tr";
   const language = languageContent[locale];
+  const testimonialSection = testimonialContent[locale];
   const withLocale = (href: string) => `/${locale}${href}`;
   const serviceCards = serviceCardsByLocale[locale];
   return (
@@ -334,11 +368,11 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
 
       <Container as="section" className="app-section border-t border-border-soft">
         <div className="mb-12">
-          <p className="text-xs tracking-[0.18em] text-text-muted uppercase">Testimonials</p>
-          <h2 className="mt-4 text-3xl md:text-5xl">Voices from our community</h2>
+          <p className="text-xs tracking-[0.18em] text-text-muted uppercase">{testimonialSection.eyebrow}</p>
+          <h2 className="mt-4 text-3xl md:text-5xl">{testimonialSection.title}</h2>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
-          {testimonials.map((testimonial) => (
+          {testimonialSection.testimonials.map((testimonial) => (
             <figure key={testimonial.person} className="rounded-[2rem] border border-border bg-surface px-6 py-8">
               <blockquote className="text-base leading-relaxed text-text-soft md:text-lg">“{testimonial.quote}”</blockquote>
               <figcaption className="mt-5 text-sm text-text-muted">— {testimonial.person}</figcaption>

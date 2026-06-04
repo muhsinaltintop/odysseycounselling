@@ -76,7 +76,7 @@ export function Footer({ locale = "en" }: { locale?: Locale }) {
         </section>
 
         <nav aria-label={content.navigationLabel} className="space-y-4">
-          <h2 className="text-xs tracking-[0.18em] text-text-muted uppercase">
+          <h2 className="text-sm font-semibold text-text">
             {content.navigationHeading}
           </h2>
           <ul className="space-y-3 text-sm text-text-soft">
@@ -99,7 +99,7 @@ export function Footer({ locale = "en" }: { locale?: Locale }) {
         </nav>
 
         <section aria-labelledby="footer-contact" className="space-y-4">
-          <h2 id="footer-contact" className="text-xs tracking-[0.18em] text-text-muted uppercase">
+          <h2 id="footer-contact" className="text-sm font-semibold text-text">
             {content.contactHeading}
           </h2>
           <p className="text-sm leading-relaxed text-text-soft">{content.contactCopy}</p>

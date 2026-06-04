@@ -137,7 +137,7 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
             <p className="text-xs tracking-[0.18em] text-text-muted uppercase">Trust statement</p>
             <h2 className="mt-4 text-3xl leading-tight md:text-5xl">
               {t
-                ? "Kültürel sıcakığın ve klinik profesyonelliğin buluştuğu bir alan."
+                ? "Kültürel sıcaklığın ve klinik profesyonelliğin buluştuğu bir alan."
                 : "A space for human warmth and clinical excellence."}
             </h2>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-text-soft md:text-lg">

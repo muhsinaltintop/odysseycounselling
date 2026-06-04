@@ -21,35 +21,66 @@ type Testimonial = {
   person: string;
 };
 
-const serviceCards: ServiceCard[] = [
-  {
-    title: "1:1 Individual Therapy",
-    description:
-      "Personalized support for anxiety, low mood, trauma, and identity challenges in a confidential setting.",
-    format: "In-person & online",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAtatxAELfN7I4sbNqbap2kYLNqGb4zkfL-_eOWpwVpOM241CRUomzTVPN3Zw6kek4Ms_Se5t3TZkawk1NarXoIA20anlzuQN5ikTP3wFY9N1Mw-taWe5e3bqi4JOLGYdZbeDK6ChZSSak7u5edFo9dUfM80n4E_GSaVKWEM5S1bfkChE26rd9WFvwZfyDWzSu9aSzealki1y-3f0_3GOWnrbD4bxvmQE5bPqT1jzgGE8NmQHVw5JOqU0dRFxnf5q5nu1UoXubsG6A",
-    imageAlt: "Two hands holding a warm cup of tea in a calm indoor setting.",
-  },
-  {
-    title: "Group Support",
-    description:
-      "Facilitated spaces that reduce isolation and build connection for Turkish-speaking communities in the UK.",
-    format: "Small facilitated groups",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuD35dZGIVwuL97VVCk0MN5dmki_0MeSvKb5InYTmLdkl_vPORt3T9eLnaSnRH_GjPJB2UPSdPCW7Q9fcb630u9Rmh_KX-CKaYfaS_ND2vy2cJBz-j65gpkv9CLVKbg-UVnUzbZpN0RBO6e2kN-43LP3gvhG10tHBWrSSwkzYtLjE19SkEge6wj0902LAgLmMnI_oOm_EYs0TouYRvVScMNs0Q-AA_LZkt0BeCFdYNn-McTXN8xGclodkfk5Zs6hKgibuipN1zGHi0A",
-    imageAlt: "A diverse group in a community room having a collaborative discussion.",
-  },
-  {
-    title: "Migrant Wellbeing",
-    description:
-      "Targeted support for relocation stress, bicultural identity strain, and emotional adjustment.",
-    format: "Projects & workshops",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBqkWSnr9W5zW0t-up7EA7JSjywqpa7ncai1eQXBiFLdb8v8VZug930Y5AUcivvbSZHbtV3rxMx4olWUlufdO5BpW9c3lpTdlGxYmWUHT_RomofmXOZfHgnANs-qDjfJNYX6VbFlzN6D2maxoRTH3LdhqySHbAIss_pf5M0JzrTq9MM6qFBzFZFam-bp05xOiHXVof0gjfAo7_bJNZWzNZd2F9urtz6jPPaW3YVZJ_ioetsghjC214LoSc0sF7em0h0h9KTQq-aU04",
-    imageAlt: "Abstract soft green brushstrokes representing emotional flow.",
-  },
-];
+const serviceCardsByLocale: Record<"en" | "tr", ServiceCard[]> = {
+  en: [
+    {
+      title: "1:1 Individual Therapy",
+      description:
+        "Personalized support for anxiety, low mood, trauma, and identity challenges in a confidential setting.",
+      format: "In-person & online",
+      imageUrl:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuAtatxAELfN7I4sbNqbap2kYLNqGb4zkfL-_eOWpwVpOM241CRUomzTVPN3Zw6kek4Ms_Se5t3TZkawk1NarXoIA20anlzuQN5ikTP3wFY9N1Mw-taWe5e3bqi4JOLGYdZbeDK6ChZSSak7u5edFo9dUfM80n4E_GSaVKWEM5S1bfkChE26rd9WFvwZfyDWzSu9aSzealki1y-3f0_3GOWnrbD4bxvmQE5bPqT1jzgGE8NmQHVw5JOqU0dRFxnf5q5nu1UoXubsG6A",
+      imageAlt: "Two hands holding a warm cup of tea in a calm indoor setting.",
+    },
+    {
+      title: "Group Support",
+      description:
+        "Facilitated spaces that reduce isolation and build connection for Turkish-speaking communities in the UK.",
+      format: "Small facilitated groups",
+      imageUrl:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuD35dZGIVwuL97VVCk0MN5dmki_0MeSvKb5InYTmLdkl_vPORt3T9eLnaSnRH_GjPJB2UPSdPCW7Q9fcb630u9Rmh_KX-CKaYfaS_ND2vy2cJBz-j65gpkv9CLVKbg-UVnUzbZpN0RBO6e2kN-43LP3gvhG10tHBWrSSwkzYtLjE19SkEge6wj0902LAgLmMnI_oOm_EYs0TouYRvVScMNs0Q-AA_LZkt0BeCFdYNn-McTXN8xGclodkfk5Zs6hKgibuipN1zGHi0A",
+      imageAlt: "A diverse group in a community room having a collaborative discussion.",
+    },
+    {
+      title: "Migrant Wellbeing",
+      description:
+        "Targeted support for relocation stress, bicultural identity strain, and emotional adjustment.",
+      format: "Projects & workshops",
+      imageUrl:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBqkWSnr9W5zW0t-up7EA7JSjywqpa7ncai1eQXBiFLdb8v8VZug930Y5AUcivvbSZHbtV3rxMx4olWUlufdO5BpW9c3lpTdlGxYmWUHT_RomofmXOZfHgnANs-qDjfJNYX6VbFlzN6D2maxoRTH3LdhqySHbAIss_pf5M0JzrTq9MM6qFBzFZFam-bp05xOiHXVof0gjfAo7_bJNZWzNZd2F9urtz6jPPaW3YVZJ_ioetsghjC214LoSc0sF7em0h0h9KTQq-aU04",
+      imageAlt: "Abstract soft green brushstrokes representing emotional flow.",
+    },
+  ],
+  tr: [
+    {
+      title: "1:1 Bireysel Terapi",
+      description:
+        "Kaygı, düşük ruh hali, travma ve kimlik zorlukları için gizli bir ortamda kişiselleştirilmiş destek.",
+      format: "Yüz yüze ve online",
+      imageUrl:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuAtatxAELfN7I4sbNqbap2kYLNqGb4zkfL-_eOWpwVpOM241CRUomzTVPN3Zw6kek4Ms_Se5t3TZkawk1NarXoIA20anlzuQN5ikTP3wFY9N1Mw-taWe5e3bqi4JOLGYdZbeDK6ChZSSak7u5edFo9dUfM80n4E_GSaVKWEM5S1bfkChE26rd9WFvwZfyDWzSu9aSzealki1y-3f0_3GOWnrbD4bxvmQE5bPqT1jzgGE8NmQHVw5JOqU0dRFxnf5q5nu1UoXubsG6A",
+      imageAlt: "Sakin bir iç mekânda sıcak bir çay fincanını tutan iki el.",
+    },
+    {
+      title: "Grup Desteği",
+      description:
+        "İngiltere’deki Türkçe konuşan topluluklarda yalnızlığı azaltan ve bağlantı kurmayı destekleyen kolaylaştırılmış alanlar.",
+      format: "Küçük kolaylaştırılmış gruplar",
+      imageUrl:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuD35dZGIVwuL97VVCk0MN5dmki_0MeSvKb5InYTmLdkl_vPORt3T9eLnaSnRH_GjPJB2UPSdPCW7Q9fcb630u9Rmh_KX-CKaYfaS_ND2vy2cJBz-j65gpkv9CLVKbg-UVnUzbZpN0RBO6e2kN-43LP3gvhG10tHBWrSSwkzYtLjE19SkEge6wj0902LAgLmMnI_oOm_EYs0TouYRvVScMNs0Q-AA_LZkt0BeCFdYNn-McTXN8xGclodkfk5Zs6hKgibuipN1zGHi0A",
+      imageAlt: "Bir topluluk odasında birlikte konuşan farklı geçmişlerden bir grup insan.",
+    },
+    {
+      title: "Göçmen Wellbeing",
+      description:
+        "Yer değiştirme stresi, iki kültürlü kimlik zorlanması ve duygusal uyum için hedeflenmiş destek.",
+      format: "Projeler ve atölyeler",
+      imageUrl:
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBqkWSnr9W5zW0t-up7EA7JSjywqpa7ncai1eQXBiFLdb8v8VZug930Y5AUcivvbSZHbtV3rxMx4olWUlufdO5BpW9c3lpTdlGxYmWUHT_RomofmXOZfHgnANs-qDjfJNYX6VbFlzN6D2maxoRTH3LdhqySHbAIss_pf5M0JzrTq9MM6qFBzFZFam-bp05xOiHXVof0gjfAo7_bJNZWzNZd2F9urtz6jPPaW3YVZJ_ioetsghjC214LoSc0sF7em0h0h9KTQq-aU04",
+      imageAlt: "Duygusal akışı temsil eden yumuşak yeşil soyut fırça izleri.",
+    },
+  ],
+};
 
 const languageBenefits: LanguageBenefit[] = [
   {
@@ -90,6 +121,7 @@ const testimonials: Testimonial[] = [
 export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
   const t = locale === "tr";
   const withLocale = (href: string) => `/${locale}${href}`;
+  const serviceCards = serviceCardsByLocale[locale];
   return (
     <>
       <Container as="section" className="app-section">
@@ -177,10 +209,10 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
       <Container as="section" className="app-section border-t border-border-soft">
         <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <h2 className="mt-4 text-3xl md:text-5xl">Pathways to wellbeing</h2>
+            <h2 className="mt-4 text-3xl md:text-5xl">{t ? "İyi oluşa giden yollar" : "Pathways to wellbeing"}</h2>
           </div>
           <Link href={withLocale("/services")} className="text-sm font-medium text-primary underline decoration-border decoration-2 underline-offset-6">
-            Explore all services
+            {t ? "Tüm hizmetleri keşfedin" : "Explore all services"}
           </Link>
         </div>
         <div className="grid gap-6 md:grid-cols-3">

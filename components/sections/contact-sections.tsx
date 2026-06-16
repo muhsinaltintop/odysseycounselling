@@ -18,7 +18,6 @@ type ContactContent = {
   messageLabel: string;
   messagePlaceholder: string;
   securityLabel: string;
-  securityHelp: string;
   honeypotLabel: string;
   submitLabel: string;
   privacyTitle: string;
@@ -48,7 +47,6 @@ const contactContent: Record<"en" | "tr", ContactContent> = {
     messageLabel: "Message",
     messagePlaceholder: "You can briefly share what you would like support with, or ask a practical question.",
     securityLabel: "Security question: what is 3 + 4?",
-    securityHelp: "This simple check helps reduce automated spam.",
     honeypotLabel: "Company",
     submitLabel: "Send confidential enquiry",
     privacyTitle: "Privacy and care",
@@ -78,7 +76,6 @@ const contactContent: Record<"en" | "tr", ContactContent> = {
     messageLabel: "Mesaj",
     messagePlaceholder: "Destek almak istediğiniz konuyu kısaca paylaşabilir veya pratik bir soru sorabilirsiniz.",
     securityLabel: "Güvenlik sorusu: 3 + 4 kaç eder?",
-    securityHelp: "Bu basit kontrol otomatik spam gönderimlerini azaltmaya yardımcı olur.",
     honeypotLabel: "Şirket",
     submitLabel: "Gizli mesaj gönder",
     privacyTitle: "Gizlilik ve özen",
@@ -191,12 +188,8 @@ export function ContactSections({
                   required
                   inputMode="numeric"
                   pattern="7"
-                  aria-describedby="contact-security-help"
                   className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-base text-text transition-colors focus:border-primary/40 focus:bg-surface focus:outline-hidden focus:ring-2 focus:ring-primary/20"
                 />
-                <p id="contact-security-help" className="mt-2 text-sm text-text-muted">
-                  {content.securityHelp}
-                </p>
               </div>
               <button type="submit" className="btn-primary">
                 {content.submitLabel}

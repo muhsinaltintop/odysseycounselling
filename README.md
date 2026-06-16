@@ -32,6 +32,22 @@ Open `http://localhost:3000`.
 - `npm run build` — create production build
 - `npm run start` — serve production build
 
+
+## Contact Form Email Settings
+The contact form submits through a server action and sends email with Resend. Configure these environment variables in local `.env.local` and in your hosting provider:
+
+```bash
+RESEND_API_KEY=your_resend_api_key
+CONTACT_FORM_FROM=noreply@odysseycounselling.uk
+CONTACT_FORM_TO=imran@odysseycounselling.uk
+```
+
+Required provider setup:
+- Verify the `odysseycounselling.uk` domain in Resend.
+- Add the DNS records Resend provides for SPF/DKIM/domain verification.
+- Keep `CONTACT_FORM_FROM` on the verified domain, preferably `noreply@odysseycounselling.uk`.
+- Point `CONTACT_FORM_TO` to the inbox that should receive website enquiries.
+
 ## Repository Structure
 ```text
 app/                  # Next.js routes, layout, and global styles

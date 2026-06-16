@@ -1,6 +1,9 @@
+import { submitContactForm } from "@/app/[locale]/contact/actions";
 import { Container } from "@/components/ui/container";
 
-const contactEmail = "imran@odysseycounselling.com";
+const visibleContactEmail = "imran@odysseycounselling.uk";
+
+type ContactFormStatus = "sent" | "invalid" | "configuration" | "failed";
 
 type ContactContent = {
   eyebrow: string;
@@ -9,10 +12,14 @@ type ContactContent = {
   emailLabel: string;
   formTitle: string;
   formDescription: string;
+  statusMessages: Record<ContactFormStatus, string>;
   nameLabel: string;
   emailFieldLabel: string;
   messageLabel: string;
   messagePlaceholder: string;
+  securityLabel: string;
+  securityHelp: string;
+  honeypotLabel: string;
   submitLabel: string;
   privacyTitle: string;
   privacyText: string;
@@ -29,11 +36,20 @@ const contactContent: Record<"en" | "tr", ContactContent> = {
     emailLabel: "Email",
     formTitle: "Simple enquiry form",
     formDescription:
-      "This form opens your email app with the details you enter, addressed to Odyssey Counselling.",
+      "Your message is checked on the server before it is emailed securely to Odyssey Counselling.",
+    statusMessages: {
+      sent: "Thank you. Your enquiry has been sent to Odyssey Counselling.",
+      invalid: "Please check the form details and answer the security question before sending.",
+      configuration: "The form is ready, but email delivery settings still need to be configured.",
+      failed: "The message could not be sent just now. Please email Odyssey Counselling directly.",
+    },
     nameLabel: "Name",
     emailFieldLabel: "Your email address",
     messageLabel: "Message",
     messagePlaceholder: "You can briefly share what you would like support with, or ask a practical question.",
+    securityLabel: "Security question: what is 3 + 4?",
+    securityHelp: "This simple check helps reduce automated spam.",
+    honeypotLabel: "Company",
     submitLabel: "Send confidential enquiry",
     privacyTitle: "Privacy and care",
     privacyText:
@@ -50,11 +66,20 @@ const contactContent: Record<"en" | "tr", ContactContent> = {
     emailLabel: "E-posta",
     formTitle: "Basit iletişim formu",
     formDescription:
-      "Bu form, girdiğiniz bilgilerle e-posta uygulamanızı Odyssey Counselling adresine yönlendirecek şekilde açar.",
+      "Mesajınız Odyssey Counselling’e güvenli şekilde e-posta ile gönderilmeden önce sunucuda kontrol edilir.",
+    statusMessages: {
+      sent: "Teşekkürler. Mesajınız Odyssey Counselling’e gönderildi.",
+      invalid: "Lütfen form bilgilerini ve güvenlik sorusunun cevabını kontrol edin.",
+      configuration: "Form hazır, ancak e-posta gönderim ayarlarının yapılandırılması gerekiyor.",
+      failed: "Mesaj şu anda gönderilemedi. Lütfen doğrudan Odyssey Counselling’e e-posta gönderin.",
+    },
     nameLabel: "İsim",
     emailFieldLabel: "E-posta adresiniz",
     messageLabel: "Mesaj",
     messagePlaceholder: "Destek almak istediğiniz konuyu kısaca paylaşabilir veya pratik bir soru sorabilirsiniz.",
+    securityLabel: "Güvenlik sorusu: 3 + 4 kaç eder?",
+    securityHelp: "Bu basit kontrol otomatik spam gönderimlerini azaltmaya yardımcı olur.",
+    honeypotLabel: "Şirket",
     submitLabel: "Gizli mesaj gönder",
     privacyTitle: "Gizlilik ve özen",
     privacyText:
@@ -65,8 +90,15 @@ const contactContent: Record<"en" | "tr", ContactContent> = {
   },
 };
 
-export function ContactSections({ locale = "en" }: { locale?: "en" | "tr" }) {
+export function ContactSections({
+  locale = "en",
+  status,
+}: {
+  locale?: "en" | "tr";
+  status?: ContactFormStatus;
+}) {
   const content = contactContent[locale];
+  const submitContactFormForLocale = submitContactForm.bind(null, locale);
 
   return (
     <>
@@ -80,10 +112,10 @@ export function ContactSections({ locale = "en" }: { locale?: "en" | "tr" }) {
           <div className="rounded-[2rem] border border-border bg-surface/80 p-6 md:col-span-4">
             <p className="text-xs tracking-[0.18em] text-text-muted uppercase">{content.emailLabel}</p>
             <a
-              href={`mailto:${contactEmail}`}
+              href={`mailto:${visibleContactEmail}`}
               className="mt-3 block break-words text-lg font-medium text-primary transition-colors hover:text-text-soft focus-visible:rounded-lg focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35"
             >
-              {contactEmail}
+              {visibleContactEmail}
             </a>
           </div>
         </div>
@@ -97,12 +129,17 @@ export function ContactSections({ locale = "en" }: { locale?: "en" | "tr" }) {
               <p className="mt-4 text-base leading-relaxed text-text-soft">{content.formDescription}</p>
             </div>
 
-            <form
-              action={`mailto:${contactEmail}`}
-              method="post"
-              encType="text/plain"
-              className="mt-8 space-y-6"
-            >
+            <form action={submitContactFormForLocale} className="mt-8 space-y-6">
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="contact-company">{content.honeypotLabel}</label>
+                <input
+                  id="contact-company"
+                  name="company"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
               <div>
                 <label htmlFor="contact-name" className="block text-sm font-medium text-primary">
                   {content.nameLabel}
@@ -116,7 +153,6 @@ export function ContactSections({ locale = "en" }: { locale?: "en" | "tr" }) {
                   className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-base text-text transition-colors focus:border-primary/40 focus:bg-surface focus:outline-hidden focus:ring-2 focus:ring-primary/20"
                 />
               </div>
-
               <div>
                 <label htmlFor="contact-email" className="block text-sm font-medium text-primary">
                   {content.emailFieldLabel}
@@ -130,7 +166,6 @@ export function ContactSections({ locale = "en" }: { locale?: "en" | "tr" }) {
                   className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-base text-text transition-colors focus:border-primary/40 focus:bg-surface focus:outline-hidden focus:ring-2 focus:ring-primary/20"
                 />
               </div>
-
               <div>
                 <label htmlFor="contact-message" className="block text-sm font-medium text-primary">
                   {content.messageLabel}
@@ -145,10 +180,36 @@ export function ContactSections({ locale = "en" }: { locale?: "en" | "tr" }) {
                 />
               </div>
 
+              <div>
+                <label htmlFor="contact-security" className="block text-sm font-medium text-primary">
+                  {content.securityLabel}
+                </label>
+                <input
+                  id="contact-security"
+                  name="securityAnswer"
+                  type="text"
+                  required
+                  inputMode="numeric"
+                  pattern="7"
+                  aria-describedby="contact-security-help"
+                  className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-base text-text transition-colors focus:border-primary/40 focus:bg-surface focus:outline-hidden focus:ring-2 focus:ring-primary/20"
+                />
+                <p id="contact-security-help" className="mt-2 text-sm text-text-muted">
+                  {content.securityHelp}
+                </p>
+              </div>
               <button type="submit" className="btn-primary">
                 {content.submitLabel}
               </button>
             </form>
+            {status ? (
+              <p
+                className="mt-6 rounded-xl border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-text-soft"
+                role="status"
+              >
+                {content.statusMessages[status]}
+              </p>
+            ) : null}
           </div>
 
           <aside className="space-y-6 md:col-span-5">

@@ -58,7 +58,7 @@ const contactContent: Record<"en" | "tr", ContactContent> = {
   },
   tr: {
     eyebrow: "İletişim",
-    title: "Hazır hissettiğinizde gizli bir mesaj gönderebilirsiniz.",
+    title: "Hazır hissettiğinizde özel bir mesaj gönderebilirsiniz.",
     intro:
       "İngilizce veya Türkçe yazabilirsiniz. Kısa bir mesaj yeterlidir; ilk görüşmeden önce her şeyi anlatmak zorunda değilsiniz.",
     emailLabel: "E-posta",
@@ -77,7 +77,7 @@ const contactContent: Record<"en" | "tr", ContactContent> = {
     messagePlaceholder: "Destek almak istediğiniz konuyu kısaca paylaşabilir veya pratik bir soru sorabilirsiniz.",
     securityLabel: "Güvenlik sorusu: 3 + 4 kaç eder?",
     honeypotLabel: "Şirket",
-    submitLabel: "Gizli mesaj gönder",
+    submitLabel: "Özel mesaj gönder",
     privacyTitle: "Gizlilik ve özen",
     privacyText:
       "Lütfen acil kriz bilgilerini bu form üzerinden göndermeyin. Anlık risk altındaysanız acil servislerle veya yerel kriz destek hattıyla iletişime geçin.",

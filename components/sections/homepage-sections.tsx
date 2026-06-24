@@ -247,13 +247,13 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
             <div className="mt-6 space-y-4 text-base leading-relaxed text-text-soft md:text-lg">
               <p>
                 {t
-                  ? "Odyssey Counselling, dünyanın farklı ülkelerinde yaşayan göçmen Türklere kültürel olarak duyarlı psikolojik destek sunar."
-                  : "Odyssey Counselling provides culturally informed psychological support for Turkish-speaking migrants around the world."}
+                  ? "İngiltere merkezli Odyssey Counselling, dünyanın farklı ülkelerinde yaşayan Türkçe konuşan bireylere psikolojik danışmanlık ve duygusal destek hizmetleri sunmaktadır. Psikolog İmran Altıntop liderliğinde yürütülen çalışmalar; İngiltere, Almanya, Hollanda ve Amerika başta olmak üzere farklı ülkelerde bireyler, topluluklar, dernekler ve kurumlarla yaklaşık 10 yıla yaklaşan deneyime dayanmaktadır."
+                  : "UK-based Odyssey Counselling provides psychological counselling and emotional wellbeing support for Turkish-speaking individuals living across different countries around the world. Led by Psychologist İmran Altıntop, our work is informed by nearly a decade of experience supporting individuals, communities, associations, and organisations across the United Kingdom, Germany, the Netherlands, the United States, and beyond."}
               </p>
               <p>
                 {t
-                  ? "Psikolog İmran Altıntop liderliğinde yürütülen yaklaşımımız; klinik uzmanlığı göç deneyiminin gerçekliğiyle birleştirerek bireyler, topluluklar ve kurumlar için güvenli, gizliliğe önem veren ve duygusal olarak destekleyici bir alan oluşturur."
-                  : "Led by Psychologist İmran Altıntop, our approach combines clinical professionalism with lived migrant experience — offering a safe, confidential, and emotionally grounded space for individuals, communities, and organisations navigating life across cultures."}
+                  ? "Odyssey Counselling, profesyonel psikolojik danışmanlık alanındaki uzmanlığını farklı ülkelerde yaşayan bireylerin deneyimlerine ilişkin derin bir anlayışla birleştirerek, danışanlarına güvenli, destekleyici ve yargılamayan bir alan sunmaktadır."
+                  : "By combining professional expertise in psychological counselling with a deep understanding of the experiences of people living between cultures, Odyssey Counselling offers a safe, supportive, and non-judgmental space where clients can explore challenges, build resilience, and work towards greater emotional wellbeing."}
               </p>
             </div>
           </div>

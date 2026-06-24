@@ -51,7 +51,7 @@ const contactContent: Record<"en" | "tr", ContactContent> = {
     submitLabel: "Send confidential enquiry",
     privacyTitle: "Privacy and care",
     privacyText:
-      "Please avoid sending urgent crisis information through this form. If you are at immediate risk, contact emergency services or a local crisis service.",
+      "Please do not use this form to report a mental health crisis, emergency, or any situation involving immediate risk. If you believe that you or someone else may be at risk of harm, please contact your local emergency services or crisis support services immediately. If you are in the United Kingdom, call 999 in an emergency, contact NHS 111 for urgent but non-emergency mental health support, or call Samaritans free of charge on 116 123 for emotional support and confidential listening.",
     responseTitle: "What happens next",
     responseText:
       "İmran will review your message and contact you as soon as possible to arrange a brief introductory consultation or respond to your enquiry.",
@@ -80,7 +80,7 @@ const contactContent: Record<"en" | "tr", ContactContent> = {
     submitLabel: "Özel mesaj gönder",
     privacyTitle: "Gizlilik ve özen",
     privacyText:
-      "Lütfen acil kriz bilgilerini bu form üzerinden göndermeyin. Anlık risk altındaysanız acil servislerle veya yerel kriz destek hattıyla iletişime geçin.",
+      "Lütfen acil kriz durumlarını veya anlık risk içeren konuları bu form üzerinden iletmeyin. Kendinize ya da bir başkasına zarar verme riski söz konusuysa, bulunduğunuz ülkedeki acil servisler veya kriz destek hizmetleri ile derhal iletişime geçin. Birleşik Krallık'ta bulunuyorsanız acil durumlarda 999'u arayabilir, acil olmayan ruh sağlığı desteği için NHS 111 ile veya duygusal destek için Samaritans'ın 116 123 numaralı ücretsiz hattı ile iletişime geçebilirsiniz.",
     responseTitle: "Sonrasında ne olur",
     responseText:
       "İmran mesajınızı değerlendirir ve kısa bir ön görüşme yapmak veya sorunuzu yanıtlamak üzere sizinle en kısa zamanda iletişim kurar.",

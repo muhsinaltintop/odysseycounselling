@@ -54,7 +54,7 @@ const contactContent: Record<"en" | "tr", ContactContent> = {
       "Please avoid sending urgent crisis information through this form. If you are at immediate risk, contact emergency services or a local crisis service.",
     responseTitle: "What happens next",
     responseText:
-      "İmran will review your enquiry and reply by email with a calm next step, such as arranging an initial consultation or answering your question.",
+      "İmran will review your message and contact you as soon as possible to arrange a brief introductory consultation or respond to your enquiry.",
   },
   tr: {
     eyebrow: "İletişim",
@@ -83,7 +83,7 @@ const contactContent: Record<"en" | "tr", ContactContent> = {
       "Lütfen acil kriz bilgilerini bu form üzerinden göndermeyin. Anlık risk altındaysanız acil servislerle veya yerel kriz destek hattıyla iletişime geçin.",
     responseTitle: "Sonrasında ne olur",
     responseText:
-      "İmran mesajınızı değerlendirir ve ilk görüşme ayarlamak ya da sorunuzu yanıtlamak gibi sakin bir sonraki adımla e-posta üzerinden dönüş yapar.",
+      "İmran mesajınızı değerlendirir ve kısa bir ön görüşme yapmak veya sorunuzu yanıtlamak üzere sizinle en kısa zamanda iletişim kurar.",
   },
 };
 

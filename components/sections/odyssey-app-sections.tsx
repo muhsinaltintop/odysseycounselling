@@ -100,7 +100,7 @@ const content: Record<Locale, LocalizedContent> = {
     ],
     heroCta: ["Yolculuğuna Başla", "Erken Erişim Al", "Odyssey’i Keşfet"],
     heroSubtext:
-      "Psikolog desteğiyle geliştirildi • Günlük kısa egzersizler • Güvenli ve sakin bir deneyim",
+      "Uzman Psikolog desteğiyle geliştirildi • Günlük kısa egzersizler • Güvenli ve sakin bir deneyim",
     whatIsTitle: "Odyssey Nedir?",
     whatIsBody: [
       "Odyssey, günlük mental wellbeing alışkanlıklarını destekleyen mobil odaklı bir uygulamadır.",

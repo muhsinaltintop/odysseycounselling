@@ -36,14 +36,14 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
     ? {
         "/about": "Hakkımızda",
         "/services": "Hizmetler",
-        "/therapist": "Terapist",
+        "/therapist": "Uzman Psikolog",
         "/faq": "Odyssey App",
         "/contact": "İletişim",
       }
     : {
         "/about": "About",
         "/services": "Services",
-        "/therapist": "Therapist",
+        "/therapist": "Expert Psychologist",
         "/faq": "Odyssey App",
         "/contact": "Contact",
       };

@@ -11,7 +11,7 @@ type TherapistContent = {
 
 const contentByLocale: Record<Locale, TherapistContent> = {
   tr: {
-    label: "Terapist",
+    label: "Uzman Psikolog",
     title: "Uzman Hakkında",
     intro: "Akademik birikim ve saha deneyimini birleştiren, göçmenlerle çalışmada uzman bir danışmanlık yaklaşımı.",
     paragraphs: [
@@ -21,8 +21,8 @@ const contentByLocale: Record<Locale, TherapistContent> = {
     ],
   },
   en: {
-    label: "Therapist",
-    title: "About the Therapist",
+    label: "Expert Psychologist",
+    title: "About the Expert Psychologist",
     intro: "A counselling practice grounded in academic depth and extensive field experience, with a focus on migrant wellbeing.",
     paragraphs: [
       "After completing my Psychology degree in 2010, I continued my academic studies in the fields of Social Work and Developmental Psychology. I completed my Master's and PhD degrees in Social Work, as well as a Master's degree in Developmental Psychology.",
@@ -49,7 +49,7 @@ export function TherapistSections({ locale }: { locale: Locale }) {
             <div className="overflow-hidden rounded-[1.5rem] border border-border/70 md:col-span-4">
               <Image
                 src="/imran.png"
-                alt={locale === "tr" ? "Psikolog İmran Altıntop'un profesyonel portresi." : "Professional portrait of Psychologist İmran Altıntop."}
+                alt={locale === "tr" ? "Uzman Psikolog İmran Altıntop'un profesyonel portresi." : "Professional portrait of Expert Psychologist İmran Altıntop."}
                 width={720}
                 height={900}
                 className="h-full min-h-80 w-full object-cover"

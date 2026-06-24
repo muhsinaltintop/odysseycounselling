@@ -16,7 +16,7 @@ const contentByLocale: Record<Locale, Record<TabKey, TabContent>> = {
   en: {
     about: {
       title: "About Us",
-      body: "Odyssey Consulting takes a holistic approach to an individual's life, from the prenatal period to old age. We focus not only on the individual's problems but also on family, school, work life, social environment, and cultural adaptation processes. In this way, we aim to produce more lasting and effective solutions. We offer expert support, particularly to migrant and refugee individuals, addressing issues such as adaptation, trauma, anxiety, identity conflict, and family difficulties.",
+      body: "Odyssey Counselling adopts a holistic approach to human wellbeing, supporting individuals from the prenatal period through older adulthood. We focus not only on the challenges experienced by the individual, but also on the influence of family relationships, education, working life, social environments, and cultural adaptation processes. Through this broader perspective, we aim to create more sustainable and effective pathways to wellbeing. We offer specialist support for migrants and refugees experiencing adjustment difficulties, trauma, anxiety, identity-related challenges, and family-related concerns.",
     },
     mission: {
       title: "Our Mission",
@@ -30,7 +30,7 @@ const contentByLocale: Record<Locale, Record<TabKey, TabContent>> = {
   tr: {
     about: {
       title: "Hakkımızda",
-      body: "Odyssey Danışmanlık, bireyin yaşamını doğum öncesi dönemden yaşlılığa kadar bütüncül bir bakış açısıyla ele alır. Sadece bireyin yaşadığı sorunlara değil; aile, okul, iş hayatı, toplumsal çevre ve kültürel uyum süreçlerine de odaklanırız. Böylece daha kalıcı ve etkili çözümler üretmeyi hedefleriz. Özellikle göçmen ve sığınmacı bireylerin yaşadığı uyum süreci, travma, kaygı, kimlik çatışması ve aile içi zorluklar konusunda uzman destek sunmaktayız.",
+      body: "Odyssey Danışmanlık, bireyin yaşamını doğum öncesi dönemden yaşlılığa kadar bütüncül bir bakış açısıyla ele alır. Sadece bireyin yaşadığı sorunlara değil; aile, okul, iş hayatı, toplumsal çevre ve kültürel uyum süreçlerine de odaklanır. Böylece daha kalıcı ve etkili çözümler üretmeyi hedefler. Özellikle göçmen ve sığınmacı bireylerin yaşadığı uyum süreci, travma, kaygı, kimlik çatışması ve aile içi zorluklar konusunda uzman desteği sunmaktadır.",
     },
     mission: {
       title: "Misyonumuz",

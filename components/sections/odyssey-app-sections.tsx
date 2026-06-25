@@ -1,6 +1,10 @@
+import Link from "next/link";
+
 import { type Locale } from "@/i18n/config";
 
 import { Container } from "@/components/ui/container";
+
+const odysseyAppUrl = "https://app.odysseycounselling.uk";
 
 type LocalizedContent = {
   heroTitle: string;
@@ -171,9 +175,13 @@ export function OdysseyAppSections({ locale }: { locale: Locale }) {
           ))}
           <div className="flex flex-wrap gap-3 pt-2">
             {t.heroCta.map((cta) => (
-              <span key={cta} className="rounded-full border border-primary/20 bg-surface px-4 py-2 text-sm text-primary">
+              <Link
+                key={cta}
+                href={odysseyAppUrl}
+                className="rounded-full border border-primary/20 bg-surface px-4 py-2 text-sm text-primary transition-all duration-300 hover:-translate-y-px hover:border-primary/30 hover:bg-surface-soft focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
                 {cta}
-              </span>
+              </Link>
             ))}
           </div>
           <p className="text-sm text-text-muted">{t.heroSubtext}</p>
@@ -228,7 +236,15 @@ export function OdysseyAppSections({ locale }: { locale: Locale }) {
           <h2 className="font-heading text-3xl text-primary">{t.finalTitle}</h2>
           <p className="mt-3 max-w-3xl text-base leading-relaxed text-text-soft md:text-lg">{t.finalBody}</p>
           <div className="mt-5 flex flex-wrap gap-3">
-            {t.finalCta.map((cta) => <span key={cta} className="rounded-full border border-primary/20 bg-background px-4 py-2 text-sm text-primary">{cta}</span>)}
+            {t.finalCta.map((cta) => (
+              <Link
+                key={cta}
+                href={odysseyAppUrl}
+                className="rounded-full border border-primary/20 bg-background px-4 py-2 text-sm text-primary transition-all duration-300 hover:-translate-y-px hover:border-primary/30 hover:bg-surface focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-soft"
+              >
+                {cta}
+              </Link>
+            ))}
           </div>
         </section>
 

@@ -87,3 +87,22 @@ README.md             # project overview and contributor setup
 - Phase 6: Automation + CRM integration
 
 Detailed roadmap: `.ai/future-roadmap.md`.
+
+## Docker deployment
+
+This project is containerized for production deployment with Next.js standalone output.
+
+Build and run with Docker Compose:
+
+```bash
+docker compose up --build
+```
+
+Or build and run the image directly:
+
+```bash
+docker build -t odysseycounselling:latest .
+docker run --rm -p 3000:3000 odysseycounselling:latest
+```
+
+The application listens on port `3000` inside the container.

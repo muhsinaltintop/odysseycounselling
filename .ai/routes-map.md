@@ -6,6 +6,7 @@
 - `/services` — service formats and practical details
 - `/therapist` — therapist profile, qualifications, approach
 - `/faq` — practical and emotional uncertainty reduction
+- `/odyssey-app` — wellbeing app overview and external app entry point
 - `/contact` — confidential enquiry and next-step flow
 
 ## Future Routes

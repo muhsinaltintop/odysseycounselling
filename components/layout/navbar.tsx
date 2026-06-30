@@ -50,7 +50,7 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/90 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-      <Container as="div" className="flex min-h-18 items-center gap-6 py-4">
+      <Container as="div" className="flex min-h-18 items-center gap-3 py-3 sm:gap-6 sm:py-4">
         <Link
           href={`/${locale}`}
           className="inline-flex shrink-0 items-center gap-2 text-sm font-medium tracking-[0.14em] text-primary uppercase transition-colors hover:text-text focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
@@ -60,7 +60,7 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
             alt="Odyssey Counselling"
             width={338}
             height={60}
-            className="h-[3.25rem] w-auto"
+            className="h-auto w-auto max-w-[7rem] sm:h-[3.25rem] sm:max-w-none"
             priority
           />
         </Link>
@@ -80,10 +80,10 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
           </ul>
         </nav>
 
-        <div className="ml-auto flex items-center gap-3">
+        <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
           <Link
             href={withLocale("/contact")}
-            className="inline-flex items-center justify-center rounded-xl border border-primary/15 bg-surface px-4 py-2 text-sm text-primary transition-all duration-300 hover:-translate-y-px hover:border-primary/25 hover:bg-surface-soft focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="inline-flex max-w-24 items-center justify-center rounded-xl border border-primary/15 bg-surface px-3 py-2 text-center text-sm leading-snug text-primary transition-all duration-300 hover:-translate-y-px hover:border-primary/25 hover:bg-surface-soft focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:max-w-none sm:px-4"
           >
             {t ? "Randevu Al" : "Book an Appointment"}
           </Link>

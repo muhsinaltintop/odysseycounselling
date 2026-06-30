@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   },
   description:
     "Premium bilingual Turkish-English counselling in the UK with calm, confidential, and clinically professional support.",
+  icons: {
+    icon: [{ url: "/icon.png", type: "image/png" }],
+    apple: [{ url: "/icon.png", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({

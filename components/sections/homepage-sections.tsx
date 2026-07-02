@@ -197,11 +197,11 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
   const serviceCards = serviceCardsByLocale[locale];
   return (
     <>
-      <Container as="section" className="app-section">
-        <div className="grid gap-10 rounded-[3rem] border border-border bg-gradient-to-br from-background to-surface-soft px-8 py-10 md:grid-cols-12 md:items-center md:px-12 md:py-14">
+      <Container as="section" className="app-section overflow-hidden">
+        <div className="grid gap-10 rounded-[2rem] border border-border bg-gradient-to-br from-background to-surface-soft px-5 py-8 sm:px-8 md:grid-cols-12 md:items-center md:rounded-[3rem] md:px-12 md:py-14">
           <div className="md:col-span-7">
             <p className="text-xs tracking-[0.18em] text-text-muted uppercase">{t ? "Göç yolculuğunda anlaşılmaya alan açmak" : "Therapy Across Borders, Grounded in Understanding"}</p>
-            <h1 className="mt-5 max-w-3xl text-5xl leading-tight md:text-7xl">{t ? "Göç yolculuğunda anlaşılmaya alan açmak" : "Therapy Across Borders, Grounded in Understanding"}</h1>
+            <h1 className="mt-5 max-w-3xl break-words text-4xl leading-tight tracking-[-0.02em] sm:text-5xl md:text-7xl">{t ? "Göç yolculuğunda anlaşılmaya alan açmak" : "Therapy Across Borders, Grounded in Understanding"}</h1>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-text-soft md:text-xl">
               {t
                 ? "İngiltere merkezli Odyssey Counselling, dünyanın farklı ülkelerinde yaşayan göçmen Türklere yönelik kültürel olarak duyarlı terapi ve wellbeing desteği sunmaktadır. Uzman Psikolog İmran Altıntop liderliğinde yürütülen çalışmalar; İngiltere, Almanya, Hollanda ve Amerika başta olmak üzere farklı ülkelerde bireyler, topluluklar, dernekler ve kurumlarla yaklaşık 10 yıla yaklaşan deneyime dayanmaktadır. Klinik profesyonelliği göç deneyiminin gerçekliğiyle birleştiren Odyssey Counselling; aidiyet, kimlik, duygusal dayanıklılık ve kültürler arası yaşamın getirdiği zorluklar için güvenli, sakin ve destekleyici bir alan sunar."
@@ -227,7 +227,7 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
               <Image
                 src="/man.png"
                 alt="Minimalist Expert Psychologist office interior with sage green walls and soft morning light."
-                className="h-full min-h-96 w-full object-cover"
+                className="aspect-[4/5] h-auto w-full object-cover md:aspect-auto md:h-full md:min-h-96"
                 width={720}
                 height={900}
               />
@@ -314,7 +314,7 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
                 <Image
                   src="/imran.png"
                   alt={t ? "Uzman Psikolog İmran Altıntop'un profesyonel portresi." : "Professional portrait of Expert Psychologist İmran Altıntop."}
-                  className="h-full min-h-96 w-full object-cover"
+                  className="aspect-[4/5] h-auto w-full object-cover md:aspect-auto md:h-full md:min-h-96"
                   width={720}
                   height={900}
                 />

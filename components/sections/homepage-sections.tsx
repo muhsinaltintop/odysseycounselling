@@ -200,8 +200,8 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
       <Container as="section" className="app-section overflow-hidden">
         <div className="grid gap-10 rounded-[2rem] border border-border bg-gradient-to-br from-background to-surface-soft px-5 py-8 sm:px-8 md:grid-cols-12 md:items-center md:rounded-[3rem] md:px-12 md:py-14">
           <div className="md:col-span-7">
-            <p className="text-xs tracking-[0.18em] text-text-muted uppercase">{t ? "Göç yolculuğunda anlaşılmaya alan açmak" : "Psychological Support Borders, Grounded in Understanding"}</p>
-            <h1 className="mt-5 max-w-3xl break-words text-4xl leading-tight tracking-[-0.02em] sm:text-5xl md:text-7xl">{t ? "Göç yolculuğunda anlaşılmaya alan açmak" : "Psychological Support Borders, Grounded in Understanding"}</h1>
+            <p className="text-xs tracking-[0.18em] text-text-muted uppercase">{t ? "Göç yolculuğunda anlaşılmaya alan açmak" : "Psychological Support Beyond Borders, Grounded in Understanding"}</p>
+            <h1 className="mt-5 max-w-3xl break-words text-4xl leading-tight tracking-[-0.02em] sm:text-5xl md:text-7xl">{t ? "Göç yolculuğunda anlaşılmaya alan açmak" : "Psychological Support Beyond Borders, Grounded in Understanding"}</h1>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-text-soft md:text-xl">
               {t
                 ? "İngiltere merkezli Odyssey Counselling, dünyanın farklı ülkelerinde yaşayan göçmen Türklere yönelik kültürel olarak duyarlı psikolojik destek ve wellbeing desteği sunmaktadır. Psikolog İmran Altıntop liderliğinde yürütülen çalışmalar; İngiltere, Almanya, Hollanda ve Amerika başta olmak üzere farklı ülkelerde bireyler, topluluklar, dernekler ve kurumlarla yaklaşık 10 yıla yaklaşan deneyime dayanmaktadır. Profesyonelliği göç deneyiminin gerçekliğiyle birleştiren Odyssey Counselling; aidiyet, kimlik, duygusal dayanıklılık ve kültürler arası yaşamın getirdiği zorluklar için güvenli, sakin ve destekleyici bir alan sunar."

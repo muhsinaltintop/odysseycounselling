@@ -1,0 +1,1094 @@
+//! JS to show a whatsNew popup.
+
+$(document).ready(function () {
+
+    var whatsNewConfig = {
+        enabled: true,
+        version: "v27.06.26.2"
+    };
+
+    if (!whatsNewConfig.enabled) {
+        return;
+    }
+
+    if (localStorage.getItem("whatsNewSeen") === whatsNewConfig.version) {
+        return;
+    }
+
+    $("#whatsNewModal").modal("show");
+
+    function closeWhatsNewModal() {
+        localStorage.setItem("whatsNewSeen", whatsNewConfig.version);
+        $("#whatsNewModal").modal("hide");
+    }
+
+    $("#whatsNewOkButton").on("click", function (e) {
+        e.preventDefault();
+        closeWhatsNewModal();
+    });
+
+    $("#whatsNewCloseX").on("click", function (e) {
+        e.preventDefault();
+        closeWhatsNewModal();
+    });
+
+});
+
+
+//! JS to show a popup for selecting "magaza turu" on step 1 of the form, only for admin users.
+
+(function () {
+  // --- Config ---
+  const FIELD_ID = 'new_magazaturu';
+  const NEXT_ID = 'NextButton';
+  const WEBFORM_ID = 'WebFormControl_3a5034cf71844ef69a89d0149d590c79';
+  const STEP1_LABEL = 'Başla';
+
+  // Show popup only if Contact.new_shopchannel equals this value:
+  const POPUP_SHOPCHANNEL_VALUE = '100000002';
+
+  function byIdOrName(x) {
+    return document.getElementById(x) || document.querySelector(`[name="${x}"]`);
+  }
+
+  function isStep1() {
+    const active = document.querySelector(`#${WEBFORM_ID}_ProgressIndicator li.active`);
+    const txt = (active?.textContent || '').replace(/\s+/g, ' ').trim();
+    return txt === STEP1_LABEL;
+  }
+
+  // Reads: <div id="contactFlags" data-shopchannel="..."></div>
+  // IMPORTANT: empty => treat as false (never block Next)
+  function shouldShowPopupByContactFlag() {
+    const el = document.getElementById('contactFlags');
+    if (!el) return false;
+
+    const raw = (el.getAttribute('data-shopchannel') || '').trim();
+    if (!raw) return false;
+
+    return raw === POPUP_SHOPCHANNEL_VALUE;
+  }
+
+  console.log("üst role:", POPUP_SHOPCHANNEL_VALUE)
+
+  function setNativeValue(el, value) {
+    const proto = Object.getPrototypeOf(el);
+    const desc = Object.getOwnPropertyDescriptor(proto, 'value');
+    if (desc && typeof desc.set === 'function') desc.set.call(el, value);
+    else el.value = value;
+  }
+
+  function fireChange(el) {
+    el.dispatchEvent(new Event('input', { bubbles: true }));
+    el.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+
+  function setVisible(el, visible) {
+    const container =
+      el.closest('tr') ||
+      el.closest('.form-group') ||
+      el.closest('td') ||
+      el.closest('.cell') ||
+      el.closest('.control') ||
+      el.parentElement;
+
+    if (!container) return;
+
+    container.classList.toggle('pp-force-hide', !visible);
+  }
+
+  // ---------- Modal ----------
+  function ensureModal() {
+    if (document.getElementById('magazaBackdrop')) return;
+
+    const style = document.createElement('style');
+    style.textContent = `
+      #magazaBackdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:9999}
+      #magazaModal{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);
+        background:#fff;border-radius:12px;padding:16px;min-width:340px;max-width:92vw;
+        box-shadow:0 10px 30px rgba(0,0,0,.25);display:none;z-index:10000}
+      #magazaModal h3{margin:0 0 8px;font-size:16px}
+      #magazaModal select{width:100%;margin-top:10px}
+      #magazaModal .row{margin-top:14px;display:flex;gap:8px;justify-content:flex-end}
+    `;
+    document.head.appendChild(style);
+
+    const backdrop = document.createElement('div');
+    backdrop.id = 'magazaBackdrop';
+
+    const modal = document.createElement('div');
+    modal.id = 'magazaModal';
+    modal.innerHTML = `
+      <h3></h3>
+      <div>Lütfen başvuruya ilişkin mağaza türünü seçin.</div>
+      <select id="magazaModalSelect" class="form-control form-select"></select>
+      <div class="row">
+        <button type="button" id="magazaCancel" class="btn btn-secondary">İptal</button>
+        <button type="button" id="magazaOk" class="btn btn-primary">Devam</button>
+      </div>
+    `;
+
+    document.body.appendChild(backdrop);
+    document.body.appendChild(modal);
+
+    backdrop.addEventListener('click', closeModal);
+    document.getElementById('magazaCancel').addEventListener('click', closeModal);
+  }
+
+  function closeModal() {
+    const backdrop = document.getElementById('magazaBackdrop');
+    const modal = document.getElementById('magazaModal');
+    if (backdrop) backdrop.style.display = 'none';
+    if (modal) modal.style.display = 'none';
+  }
+
+  function replaceOkHandler(handler) {
+    const okBtn = document.getElementById('magazaOk');
+    if (!okBtn) return;
+    if (okBtn.__handler) okBtn.removeEventListener('click', okBtn.__handler);
+    okBtn.__handler = handler;
+    okBtn.addEventListener('click', handler);
+  }
+
+  function openModalFromField(fieldEl, onOk) {
+    ensureModal();
+
+    const backdrop = document.getElementById('magazaBackdrop');
+    const modal = document.getElementById('magazaModal');
+    const sel = document.getElementById('magazaModalSelect');
+
+    sel.innerHTML = '';
+    Array.from(fieldEl.options).forEach((opt) => {
+      const o = document.createElement('option');
+      o.value = opt.value;
+      o.textContent = opt.textContent;
+      if (opt.value === fieldEl.value) o.selected = true;
+      sel.appendChild(o);
+    });
+
+    replaceOkHandler(function () {
+      const v = sel.value;
+      if (!v) {
+        alert('Lütfen bir seçim yapın.');
+        return;
+      }
+      closeModal();
+      onOk(v);
+    });
+
+    backdrop.style.display = 'block';
+    modal.style.display = 'block';
+    sel.focus();
+  }
+
+  // ---------- Main ----------
+  let suppressNextOnce = false;
+
+  function shouldInterceptNext() {
+    if (!isStep1()) return false;
+    if (!shouldShowPopupByContactFlag()) return false;
+
+    const fieldEl = byIdOrName(FIELD_ID);
+    if (!fieldEl) return false;
+
+    // only if empty
+    return String(fieldEl.value || '') === '';
+  }
+
+  function onNextClick(e) {
+    if (suppressNextOnce) {
+      suppressNextOnce = false;
+      return true;
+    }
+
+    if (!shouldInterceptNext()) return true;
+
+    const fieldEl = byIdOrName(FIELD_ID);
+    if (!fieldEl) return true;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    openModalFromField(fieldEl, function (selectedValue) {
+      setNativeValue(fieldEl, selectedValue);
+      fireChange(fieldEl);
+
+      const nextBtn = document.getElementById(NEXT_ID);
+      if (nextBtn) {
+        suppressNextOnce = true;
+        nextBtn.click();
+      }
+    });
+
+    return false;
+  }
+
+  function applyVisibility() {
+    const fieldEl = byIdOrName(FIELD_ID);
+    if (!fieldEl) return;
+    // popup controls it on step 1
+    setVisible(fieldEl, !isStep1());
+  }
+
+  function bind() {
+    applyVisibility();
+
+    const nextBtn = document.getElementById(NEXT_ID);
+    if (nextBtn && nextBtn.dataset.boundMagazaPopup !== '1') {
+      nextBtn.dataset.boundMagazaPopup = '1';
+      nextBtn.addEventListener('click', onNextClick, true);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    bind();
+    const formRoot = document.getElementById(WEBFORM_ID) || document.body;
+    const obs = new MutationObserver(bind);
+    obs.observe(formRoot, { childList: true, subtree: true });
+  });
+})();
+
+//! JS to hide the "Restart" button on step 1 of the form, and show it on later steps
+document.addEventListener('DOMContentLoaded', function () {
+  const webFormId = 'WebFormControl_3a5034cf71844ef69a89d0149d590c79';
+
+  // Finds the restart button component you added (the exact href you shared)
+  const restartBtn = document.querySelector(`a.btn.button2[href="/talep?new=1"]`);
+
+  // Detect "step 1" by progress indicator active item text = "Başla"
+  const isStep1 = () => {
+    const active = document.querySelector(`#${webFormId}_ProgressIndicator li.active`);
+    return active && active.textContent.trim() === 'Başla';
+  };
+
+  const apply = () => {
+    if (!restartBtn) return;
+    restartBtn.style.display = isStep1() ? 'none' : '';
+  };
+
+  apply();
+
+  // In multi-step forms the DOM can change; observe and re-apply safely
+  const formRoot = document.getElementById(webFormId);
+  if (!formRoot) return;
+
+  const obs = new MutationObserver(apply);
+  obs.observe(formRoot, { childList: true, subtree: true });
+});
+
+//! JS to hide the modal close button on step 2 of the form
+
+(function () {
+  var modalSelector = 'section.modal[aria-label="Oluştur dialog"].modal-form.modal-form-insert';
+  var closeBtnSelector = 'button.form-close';
+  var iframeSelector =
+    'iframe[title="Oluştur dialog"][data-page="/_portal/modal-form-template-path/18e7baf5-ee8c-4934-ad2a-1453214d1f9b"]';
+
+  var fileInputSelector = '#new_file_input_file';
+
+  var pollTimer = null;
+
+  function getShownModal() {
+    return document.querySelector(modalSelector + '.show');
+  }
+
+  function getCloseBtn(modalEl) {
+    return modalEl ? modalEl.querySelector(closeBtnSelector) : null;
+  }
+
+  function getIframe(modalEl) {
+    return modalEl
+      ? modalEl.querySelector(iframeSelector) || modalEl.querySelector('iframe')
+      : null;
+  }
+
+  function getIframeDoc(iframe) {
+    try {
+      return iframe && (iframe.contentDocument || iframe.contentWindow.document);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function setCloseVisible(modalEl, visible) {
+    var btn = getCloseBtn(modalEl);
+    if (!btn) return;
+
+    btn.style.display = visible ? '' : 'none';
+    btn.setAttribute('aria-hidden', visible ? 'false' : 'true');
+    btn.tabIndex = visible ? 0 : -1;
+    btn.disabled = !visible;
+  }
+
+  function update() {
+    var modalEl = getShownModal();
+    if (!modalEl) return;
+
+    var doc = getIframeDoc(getIframe(modalEl));
+    if (!doc) return;
+
+    var isStep2 = !!doc.querySelector(fileInputSelector);
+    setCloseVisible(modalEl, !isStep2);
+  }
+
+  function start() {
+    if (pollTimer) return;
+    pollTimer = setInterval(update, 250);
+  }
+
+  function stopAndRestore() {
+    if (pollTimer) clearInterval(pollTimer);
+    pollTimer = null;
+
+    // restore button if modal still exists
+    var modalEl = document.querySelector(modalSelector);
+    if (modalEl) setCloseVisible(modalEl, true);
+  }
+
+  // Start/stop based on Bootstrap modal lifecycle (if events fire)
+  document.addEventListener(
+    'shown.bs.modal',
+    function (e) {
+      if (e.target && e.target.matches(modalSelector)) {
+        start();
+        // handle step change
+        var iframe = getIframe(e.target);
+        if (iframe && !iframe.dataset.ppCloseHideWired) {
+          iframe.dataset.ppCloseHideWired = '1';
+          iframe.addEventListener('load', update);
+        }
+        update();
+      }
+    },
+    true,
+  );
+
+  document.addEventListener(
+    'hidden.bs.modal',
+    function (e) {
+      if (e.target && e.target.matches(modalSelector)) {
+        stopAndRestore();
+      }
+    },
+    true,
+  );
+
+  // Fallback: if modal is already open when script loads
+  if (getShownModal()) start();
+})();
+
+//! JS to auto-close the modal after successful file upload in the iframe, by watching for changes in the iframe DOM.
+
+(function () {
+  // ===== CONFIG =====
+  var modalSelector = '.modal.show'; // current open modal
+  var closeDelayMs = 150;
+
+  // Success indicator inside iframe
+  var successSelector = '#MessagePanel.alert-success';
+  var successTextMustContain = 'Kaydedildi'; // set "" to disable text check
+
+  // Poll settings
+  var pollEveryMs = 300;
+  var maxPollMs = 120000; // 2 minutes
+
+  function getOpenModal() {
+    return document.querySelector(modalSelector);
+  }
+
+  function getIframeInModal(modalEl) {
+    if (!modalEl) return null;
+    // pick the first iframe in that modal; if you have multiple, make this selector more specific
+    return modalEl.querySelector('iframe');
+  }
+
+  function getIframeDoc(iframe) {
+    try {
+      return iframe && (iframe.contentDocument || iframe.contentWindow.document);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function isSuccess(doc) {
+    if (!doc) return false;
+    var panel = doc.querySelector(successSelector);
+    if (!panel) return false;
+
+    if (successTextMustContain) {
+      var txt = (panel.textContent || '').trim();
+      return txt.indexOf(successTextMustContain) !== -1;
+    }
+    return true;
+  }
+
+  function closeModal(modalEl) {
+    if (!modalEl) return;
+
+    if (window.bootstrap && window.bootstrap.Modal) {
+      var instance =
+        window.bootstrap.Modal.getInstance(modalEl) || new window.bootstrap.Modal(modalEl);
+      instance.hide();
+      return;
+    }
+
+    // fallback
+    var dismiss = modalEl.querySelector("[data-bs-dismiss='modal']");
+    if (dismiss) dismiss.click();
+  }
+
+  function startAutoCloseWatch(modalEl) {
+    var iframe = getIframeInModal(modalEl);
+    if (!iframe) return;
+
+    var startedAt = Date.now();
+    var pollTimer = null;
+
+    function stop() {
+      if (pollTimer) clearInterval(pollTimer);
+      pollTimer = null;
+    }
+
+    function poll() {
+      var doc = getIframeDoc(iframe);
+      if (isSuccess(doc)) {
+        stop();
+        setTimeout(function () {
+          closeModal(modalEl);
+        }, closeDelayMs);
+        return;
+      }
+      if (Date.now() - startedAt > maxPollMs) {
+        stop();
+      }
+    }
+
+    // (Re)start polling whenever iframe loads (covers submit reloads)
+    function onLoad() {
+      // reset timer window on each load if you want:
+      // startedAt = Date.now();
+      poll(); // check immediately after load
+    }
+
+    iframe.addEventListener('load', onLoad);
+
+    // Start polling now (also catches the case success already visible)
+    pollTimer = setInterval(poll, pollEveryMs);
+    poll();
+
+    // Clean up when modal closes
+    function onHidden(e) {
+      if (e.target !== modalEl) return;
+      stop();
+      iframe.removeEventListener('load', onLoad);
+      document.removeEventListener('hidden.bs.modal', onHidden, true);
+    }
+    document.addEventListener('hidden.bs.modal', onHidden, true);
+  }
+
+  // Start each time a modal opens
+  document.addEventListener(
+    'shown.bs.modal',
+    function (e) {
+      // Use the modal that was shown
+      startAutoCloseWatch(e.target);
+    },
+    true,
+  );
+})();
+
+//! JS to conditionally display auto attachment radio fields based on a MagazaTuru value
+
+(function () {
+  const WEBFORM_ID = 'WebFormControl_3a5034cf71844ef69a89d0149d590c79';
+  const STEP4_LABEL = 'Belge ekle'; // <-- change if needed
+  const ENTITY_SET_NAME = 'new_table1s';
+  const TARGET_MAGAZATURU = '100000001';
+
+  const FIELDS_TO_HIDE = ['new_attachconditionsautomatically', 'new_attachcontractautomatically'];
+
+  let step4Initialized = false;
+  let fetchInProgress = false;
+  let lastRecordId = '';
+  let lastMagazaTuru = null;
+
+  function getPopupShopChannelValue() {
+    const el = document.getElementById('contactFlags');
+    return String(el?.getAttribute('data-shopchannel') || '').trim();
+  }
+
+  function getActiveStepLabel() {
+    const active = document.querySelector(`#${WEBFORM_ID}_ProgressIndicator li.active`);
+    return (active?.textContent || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function isStep4() {
+    return getActiveStepLabel() === STEP4_LABEL;
+  }
+
+  function setVisible(el, visible) {
+    const container =
+      el.closest('tr') ||
+      el.closest('.form-group') ||
+      el.closest('td') ||
+      el.closest('.cell') ||
+      el.closest('.control') ||
+      el.parentElement;
+
+    if (!container) return;
+    container.classList.toggle('pp-force-hide', !visible);
+  }
+
+  function setFieldsVisible(visible) {
+    FIELDS_TO_HIDE.forEach(function (fieldId) {
+      const el = document.getElementById(fieldId);
+      if (!el) return;
+      setVisible(el, visible);
+    });
+  }
+
+  function setRadioFalse(fieldId) {
+    const falseRadio = document.getElementById(fieldId + '_0');
+    if (!falseRadio) return;
+
+    falseRadio.checked = true;
+    falseRadio.dispatchEvent(new Event('input', { bubbles: true }));
+    falseRadio.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+
+  function getRecordIdFromDom() {
+    const subgrid = document.querySelector('.entity-grid.subgrid[data-ref-id]');
+    return (subgrid?.getAttribute('data-ref-id') || '').trim();
+  }
+
+  function loadMagazaTuru(recordId) {
+    return fetch(`/_api/${ENTITY_SET_NAME}(${recordId})?$select=new_magazaturu`, {
+      method: 'GET',
+      headers: { Accept: 'application/json' },
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('Web API request failed: ' + res.status);
+        return res.json();
+      })
+      .then(function (data) {
+        return String(data.new_magazaturu ?? '').trim();
+      });
+  }
+
+  function applyVisibility(magazaTuru) {
+    const mustHide =
+      getPopupShopChannelValue() === '100000001' ||
+      String(magazaTuru || '').trim() === TARGET_MAGAZATURU;
+
+    if (mustHide) {
+      setFieldsVisible(false);
+      FIELDS_TO_HIDE.forEach(setRadioFalse);
+    } else {
+      setFieldsVisible(true);
+    }
+  }
+
+  function resetWhenNotStep4() {
+    step4Initialized = false;
+    fetchInProgress = false;
+    lastRecordId = '';
+    lastMagazaTuru = null;
+  }
+
+  function bindStep4Visibility() {
+    if (!isStep4()) {
+      resetWhenNotStep4();
+      return;
+    }
+
+    const recordId = getRecordIdFromDom();
+    if (!recordId) return;
+
+    // If already resolved for this record, just re-apply final state, no flicker
+    if (step4Initialized && lastRecordId === recordId && lastMagazaTuru !== null) {
+      applyVisibility(lastMagazaTuru);
+      return;
+    }
+
+    // Avoid repeated parallel fetches
+    if (fetchInProgress) return;
+
+    // First entry only: hide immediately
+    setFieldsVisible(false);
+
+    fetchInProgress = true;
+
+    loadMagazaTuru(recordId)
+      .then(function (magazaTuru) {
+        lastRecordId = recordId;
+        lastMagazaTuru = magazaTuru;
+        step4Initialized = true;
+        applyVisibility(magazaTuru);
+      })
+      .catch(function (err) {
+        console.error('Step4 visibility error:', err);
+        setFieldsVisible(true);
+      })
+      .finally(function () {
+        fetchInProgress = false;
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    bindStep4Visibility();
+
+    const formRoot = document.getElementById(WEBFORM_ID) || document.body;
+    const obs = new MutationObserver(bindStep4Visibility);
+    obs.observe(formRoot, { childList: true, subtree: true });
+  });
+})();
+
+
+
+
+//! JS to restrict page usage to work hours only
+/*
+(function () {
+  // === CONFIG ===
+  const TIMEZONE = 'Europe/Istanbul';
+
+  // Work hours (Istanbul time): Mon–Fri 08:00–18:00
+  const WORKDAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+  const START_MIN = 8 * 60; // 08:00
+  const END_MIN = 18 * 60; // 18:00 (closing time)
+
+  // Popup text
+  const TITLE = '';
+  const MESSAGE = 'Yeni talepler sadece hafta içi 08:00–18:00 saatleri arasında oluşturulabilir.'; // <-- put your message here
+  const HOURS_TEXT = 'Talep oluşturmak şu anda mümkün değil.';
+
+  function getIstanbulParts() {
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: TIMEZONE,
+      weekday: 'short',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    }).formatToParts(new Date());
+
+    return Object.fromEntries(parts.map((p) => [p.type, p.value]));
+  }
+
+  function isWithinWorkHours() {
+    const map = getIstanbulParts();
+    const weekday = map.weekday; // Mon, Tue, ...
+    const hour = parseInt(map.hour, 10);
+    const minute = parseInt(map.minute, 10);
+    const minutes = hour * 60 + minute;
+
+    return WORKDAYS.includes(weekday) && minutes >= START_MIN && minutes < END_MIN;
+  }
+
+  function showPopup() {
+    const overlay = document.createElement('div');
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.style.cssText = `
+      position:fixed; inset:0; background:rgba(0,0,0,.55);
+      display:flex; align-items:center; justify-content:center;
+      z-index:99999; padding:20px;
+    `;
+
+    overlay.innerHTML = `
+      <div style="max-width:560px; width:100%; background:#fff; border-radius:12px; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,.25); font-family:inherit">
+        <h2 style="margin:0 0 8px 0; font-size:20px">${TITLE}</h2>
+        <p style="margin:0 0 10px 0; line-height:1.45">${HOURS_TEXT}</p>
+        <p style="margin:0 0 16px 0; line-height:1.45">${MESSAGE}</p>
+        <button id="wh-ok" type="button" style="padding:10px 14px; border-radius:8px; border:0; cursor:pointer">
+          Tamam
+        </button>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    overlay.querySelector('#wh-ok').addEventListener('click', () => overlay.remove());
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) overlay.remove();
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!isWithinWorkHours()) showPopup();
+  });
+})();
+*/
+
+/**
+ * Host page (Bootstrap modal): block modal close (X) if iframe file input is empty.
+ * Button: <button class="form-close" data-bs-dismiss="modal" ...>
+ * Iframe (same-origin): contains #new_file_input_file
+ */
+
+//03.07.2026 güncellemesi: 
+//! Restart popup (Adım 1 - Sadece popup göster)
+
+$(document).ready(function () {
+
+    const params = new URLSearchParams(window.location.search);
+
+    const isSuccessPage =
+        params.get("msg") === "success";
+
+    $(document).on(
+    "click",
+    'a[href="/talep?new=1"]',
+    function (e) {
+
+        if (sessionStorage.getItem("skipRestartPopup") === "1") {
+            sessionStorage.removeItem("skipRestartPopup");
+            return;
+        }
+
+        if (isSuccessPage) {
+            return;
+        }
+
+        e.preventDefault();
+
+        $("#restartError").hide();
+
+        $("#restartModal").modal({
+            backdrop: "static",
+            keyboard: false
+        });
+
+        $("#restartModal").modal("show");
+    }
+);
+
+    $(document).on(
+        "click",
+        "#btnRestartCancel",
+        function () {
+
+            $("#restartModal").modal("hide");
+        }
+    );
+
+});
+
+$(document).on(
+    "click",
+    "#btnRestartContinue",
+    function (e) {
+
+        e.preventDefault();
+
+        sessionStorage.setItem("skipRestartPopup", "1");
+
+        window.location.href = "/talep?new=1";
+    }
+);
+
+//! Duplicate Check (Adım 1 - Sadece tespit)
+
+$(document).ready(function () {
+
+    const ENTITY_SET_NAME = "new_table1s";
+    const FILE_NO_FIELD = "new_newcolumn";
+
+    let duplicateCheckDone = false;
+    let matchedPreviousRecord = null;
+
+    function escapeOData(value) {
+        return String(value).replace(/'/g, "''");
+    }
+
+    function getCurrentRecordId() {
+        const id = $("#EntityFormView_EntityID").val();
+        return id ? id.toLowerCase() : null;
+    }
+
+    function showDuplicatePopup() {
+
+    const message =
+        $("#DuplicateComplaintMessage").html();
+
+    $("#duplicateComplaintModalBody")
+        .html(message);
+
+    $("#duplicateComplaintModal").modal({
+        backdrop: "static",
+        keyboard: false
+    });
+
+    $("#duplicateComplaintModal").modal("show");
+}
+    function showNotComplaintPopup() {
+
+    $("#notComplaintModal").modal({
+        backdrop: "static",
+        keyboard: false
+    });
+
+    $("#notComplaintModal").modal("show");
+}
+
+$(document).on(
+    "click",
+    "#btnNotComplaintOk",
+    function () {
+
+        $("#notComplaintModal").modal("hide");
+    }
+);
+
+    function getCurrentUserRole(callback) {
+
+    shell.getTokenDeferred().done(function (token) {
+
+        $.ajax({
+
+            type: "GET",
+
+            url: "/_api/contacts?$select=contactid,_new_companyid_value&$top=1",
+
+            beforeSend: function (xhr) {
+
+                xhr.setRequestHeader(
+                    "__RequestVerificationToken",
+                    token
+                );
+
+                xhr.setRequestHeader(
+                    "Accept",
+                    "application/json"
+                );
+            },
+
+            success: function (res) {
+
+                const contact =
+                    res.value && res.value.length
+                        ? res.value[0]
+                        : null;
+
+                const isUser =
+                    contact &&
+                    contact._new_companyid_value;
+
+                callback(
+                    isUser
+                        ? "User"
+                        : "Lawyer"
+                );
+            },
+
+            error: function () {
+
+                callback("Unknown");
+            }
+        });
+
+    });
+
+}
+
+    function runDuplicateCheck() {
+
+        if (duplicateCheckDone) {
+            return;
+        }
+
+    const fileNoEl =
+    $("#" + FILE_NO_FIELD);
+
+if (!fileNoEl.length) {
+    return;
+}
+
+const dosyaNo =
+    fileNoEl.val();
+
+if (!dosyaNo) {
+  
+    setTimeout(runDuplicateCheck, 1000);
+
+    return;
+}
+
+const INVALID_FILE_NO =
+    "0000000000000";
+
+if (dosyaNo === INVALID_FILE_NO) {
+
+    showNotComplaintPopup();
+
+    return;
+}
+
+        const currentRecordId =
+            getCurrentRecordId();
+
+        shell.getTokenDeferred().done(function (token) {
+
+            const filter =
+                "new_newcolumn eq '" +
+                escapeOData(dosyaNo) +
+                "'";
+
+            const query =
+                "/_api/" +
+                ENTITY_SET_NAME +
+                "?$select=new_table1id,new_newcolumn,createdon,new_talepdurumu" +
+                "&$filter=" +
+                encodeURIComponent(filter) +
+                "&$orderby=createdon desc";
+
+            $.ajax({
+
+                type: "GET",
+
+                url: query,
+
+                beforeSend: function (xhr) {
+
+                    xhr.setRequestHeader(
+                        "__RequestVerificationToken",
+                        token
+                    );
+
+                    xhr.setRequestHeader(
+                        "Accept",
+                        "application/json"
+                    );
+                },
+
+                success: function (res) {
+
+                    duplicateCheckDone = true;
+
+                    const rows =
+                        res.value || [];
+
+                    const duplicates =
+                        rows.filter(function (x) {
+
+                            if (!x.new_table1id) {
+                                return false;
+                            }
+
+                            if (
+                                x.new_table1id.toLowerCase() === currentRecordId
+                            ) {
+                                return false;
+                            }
+
+                            const durum =
+                                x.new_talepdurumu;
+
+                            if (
+                                durum === null ||
+                                durum === undefined ||
+                                durum === 100000000
+                            ) {
+                                return false;
+                            }
+
+                            return true;
+                        });
+
+                    if (duplicates.length > 0) {
+
+                        matchedPreviousRecord = duplicates[0];
+
+                        showDuplicatePopup();
+
+                    } else {
+
+                        
+                    }
+                },
+
+                error: function (err) {
+
+                    console.error(
+                        "Duplicate kontrol hatası:",
+                        err
+                    );
+                }
+
+            });
+
+        });
+
+    }
+
+    setTimeout(runDuplicateCheck, 3000);
+
+    $(document).on(
+        "change",
+        "#" + FILE_NO_FIELD,
+        runDuplicateCheck
+    );
+
+    $(document).on(
+    "click",
+    "#btnMevcutKayit",
+    function () {
+
+        $("#duplicateComplaintModal")
+            .modal("hide");
+
+        getCurrentUserRole(function (role) {
+
+            const dosyaNo =
+                matchedPreviousRecord?.new_newcolumn;
+
+            if (!dosyaNo) {
+                console.error("Dosya numarası bulunamadı.");
+                return;
+            }
+
+
+            if (role === "User") {
+
+                window.location.href =
+                    "/taleplerim/?dosyano=" +
+                    encodeURIComponent(dosyaNo);
+
+                return;
+            }
+
+            window.location.href =
+                "/talepleri-yonet/?dosyano=" +
+                encodeURIComponent(dosyaNo);
+
+        });
+
+    }
+);
+
+$(document).on(
+    "click",
+    "#btnNotComplaintOk",
+    function () {
+
+        $("#notComplaintModal")
+            .modal("hide");
+
+        getCurrentUserRole(function (role) {
+
+            if (role === "User") {
+
+                window.location.href =
+                    "/taleplerim/";
+
+                return;
+            }
+
+            window.location.href =
+                "/talepleri-yonet/";
+
+        });
+
+    }
+);
+
+});

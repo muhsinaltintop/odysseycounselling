@@ -93,7 +93,7 @@ const content: Record<Locale, LocalizedContent> = {
       "Start creating calmer, safer, and more sustainable moments for yourself with Odyssey.",
     finalCta: ["Join Early Access", "Experience Odyssey"],
     footerNote:
-      "Odyssey App is not a replacement for therapy or emergency mental health support. Please contact local health services if immediate support is needed.",
+      "Odyssey App is not a replacement for psychological support or emergency mental health support. Please contact local health services if immediate support is needed.",
   },
   tr: {
     heroTitle: "Hayatın değiştiğinde, zihnin de desteğe ihtiyaç duyar.",
@@ -104,7 +104,7 @@ const content: Record<Locale, LocalizedContent> = {
     ],
     heroCta: ["Yolculuğuna Başla", "Erken Erişim Al", "Odyssey’i Keşfet"],
     heroSubtext:
-      "Uzman Psikolog desteğiyle geliştirildi • Günlük kısa egzersizler • Güvenli ve sakin bir deneyim",
+      "Psikolog desteğiyle geliştirildi • Günlük kısa egzersizler • Güvenli ve sakin bir deneyim",
     whatIsTitle: "Odyssey Nedir?",
     whatIsBody: [
       "Odyssey, günlük mental wellbeing alışkanlıklarını destekleyen mobil odaklı bir uygulamadır.",
@@ -156,7 +156,7 @@ const content: Record<Locale, LocalizedContent> = {
       "Odyssey ile günlük yaşamın içinde kendinize daha sakin, daha güvenli ve daha sürdürülebilir alanlar açmaya başlayın.",
     finalCta: ["Erken Erişim İçin Kaydol", "Odyssey’i Deneyimle"],
     footerNote:
-      "Odyssey App bir terapi yerine geçmez. Acil psikolojik destek ihtiyaçlarında yerel sağlık hizmetlerine başvurmanız önerilir.",
+      "Odyssey App bir psikolojik destek yerine geçmez. Acil psikolojik destek ihtiyaçlarında yerel sağlık hizmetlerine başvurmanız önerilir.",
   },
 };
 

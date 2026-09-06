@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/container";
 const footerContent = {
   en: {
     description:
-      "Bilingual Turkish-English counselling delivered with calm, clinical professionalism and deep respect for confidentiality.",
+      "Bilingual Turkish-English counselling delivered with calm, professional and deep respect for confidentiality.",
     navigationLabel: "Footer links",
     navigationHeading: "Navigate",
     links: {
@@ -22,7 +22,7 @@ const footerContent = {
   },
   tr: {
     description:
-      "Gizliliğe derin saygı ve sakin, klinik profesyonellikle sunulan iki dilli Türkçe-İngilizce danışmanlık.",
+      "Gizliliğe derin saygı ve sakin, profesyonellikle sunulan iki dilli Türkçe-İngilizce danışmanlık.",
     navigationLabel: "Alt bilgi bağlantıları",
     navigationHeading: "Gezinme",
     links: {

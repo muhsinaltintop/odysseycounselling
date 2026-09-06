@@ -60,7 +60,7 @@ const contentByLocale: Record<Locale, PageContent> = {
       migration: {
         title: "Göç ve Göçmen Psikolojisi Danışmanlığı",
         description:
-          "Göç süreci; bireyler ve aileler için duygusal, sosyal ve psikolojik açıdan önemli değişimler barındırabilir. Odyssey Danışmanlık olarak göçmen, sığınmacı ve uluslararası ailelerin yaşadığı uyum süreçlerine yönelik uzman desteği sunuyoruz.",
+          "Göç süreci; bireyler ve aileler için duygusal, sosyal ve psikolojik açıdan önemli değişimler barındırabilir. Odyssey Danışmanlık olarak göçmen, sığınmacı ve uluslararası ailelerin yaşadığı uyum süreçlerine yönelik destek sunuyoruz.",
         items: [
           "Yeni ülkeye uyum süreci, kültürel geçiş ve yaşam değişikliklerine destek",
           "Göç sonrası kaygı, stres, yalnızlık ve belirsizlikle başa çıkma",
@@ -128,7 +128,7 @@ const contentByLocale: Record<Locale, PageContent> = {
       migration: {
         title: "Migration and Migrant Psychology Counseling",
         description:
-          "Migration can involve significant emotional, social, and psychological changes for individuals and families. At Odyssey Consulting, we offer expert support for the integration processes experienced by migrant, refugee, and international families.",
+          "Migration can involve significant emotional, social, and psychological changes for individuals and families. At Odyssey Consulting, we offer professional support for the integration processes experienced by migrant, refugee, and international families.",
         items: [
           "Support for the process of adapting to a new country, cultural transition, and life changes.",
           "Coping with anxiety, stress, loneliness, and uncertainty after migration.",

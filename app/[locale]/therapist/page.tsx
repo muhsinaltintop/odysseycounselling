@@ -4,9 +4,9 @@ import { TherapistSections } from "@/components/sections/therapist-sections";
 import { type Locale, defaultLocale, isLocale } from "@/i18n/config";
 
 export const metadata: Metadata = {
-  title: "Expert Psychologist | Odyssey Counselling",
+  title: "Psychologist | Odyssey Counselling",
   description:
-    "Meet the Expert Psychologist at Odyssey Counselling and learn about her academic background, clinical approach, and migrant-focused experience.",
+    "Meet the Psychologist at Odyssey Counselling and learn about her academic background, professional approach, and migrant-focused experience.",
 };
 
 export default async function TherapistPage({

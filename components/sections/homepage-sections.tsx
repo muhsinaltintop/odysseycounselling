@@ -37,7 +37,7 @@ type TestimonialContent = {
 const serviceCardsByLocale: Record<"en" | "tr", ServiceCard[]> = {
   en: [
     {
-      title: "1:1 Individual Therapy",
+      title: "1:1 Individual Psychological Support",
       description:
         "Personalized support for anxiety, low mood, trauma, and identity challenges in a confidential setting.",
       format: "In-person & online",
@@ -66,7 +66,7 @@ const serviceCardsByLocale: Record<"en" | "tr", ServiceCard[]> = {
   ],
   tr: [
     {
-      title: "1:1 Bireysel Terapi",
+      title: "1:1 Bireysel Psikolojik Destek",
       description:
         "Kaygı, düşük ruh hali, travma ve kimlik zorlukları için gizli bir ortamda kişiselleştirilmiş destek.",
       format: "Yüz yüze ve online",
@@ -97,10 +97,10 @@ const serviceCardsByLocale: Record<"en" | "tr", ServiceCard[]> = {
 
 const languageContent: Record<"en" | "tr", LanguageContent> = {
   en: {
-    eyebrow: "Why native language therapy matters",
+    eyebrow: "Why native language psychological support matters",
     title: "Language is the home of the inner world.",
     description:
-      "When therapy happens in your native language, nuance, memory, and emotional precision become easier to access.",
+      "When psychological support happens in your native language, nuance, memory, and emotional precision become easier to access.",
     benefits: [
       {
         title: "Untranslatable nuance",
@@ -120,10 +120,10 @@ const languageContent: Record<"en" | "tr", LanguageContent> = {
     ],
   },
   tr: {
-    eyebrow: "Ana dilde terapi neden önemlidir",
+    eyebrow: "Ana dilde psikolojik destek neden önemlidir",
     title: "Dil, iç dünyanın evidir.",
     description:
-      "Terapi ana dilinizde gerçekleştiğinde nüansa, belleğe ve duygusal hassasiyete erişmek kolaylaşır.",
+      "psikolojik destek ana dilinizde gerçekleştiğinde nüansa, belleğe ve duygusal hassasiyete erişmek kolaylaşır.",
     benefits: [
       {
         title: "Çevrilemeyen nüanslar",
@@ -151,7 +151,7 @@ const testimonialContent: Record<"en" | "tr", TestimonialContent> = {
     testimonials: [
       {
         quote:
-          "Finding an Expert Psychologist who understood the pressure of being a migrant in London changed everything for me.",
+          "Finding an Psychologist who understood the pressure of being a migrant in London changed everything for me.",
         person: "Ayşe K., Individual Client",
       },
       {
@@ -162,7 +162,7 @@ const testimonialContent: Record<"en" | "tr", TestimonialContent> = {
       {
         quote:
           "İmran's professional yet warm approach helped me through a difficult transition with clarity and care.",
-        person: "Elif D., Online Therapy",
+        person: "Elif D., Online Psychological Support",
       },
     ],
   },
@@ -172,7 +172,7 @@ const testimonialContent: Record<"en" | "tr", TestimonialContent> = {
     testimonials: [
       {
         quote:
-          "Londra’da göçmen olmanın baskısını anlayan bir Uzman Psikolog bulmak benim için her şeyi değiştirdi.",
+          "Londra’da göçmen olmanın baskısını anlayan bir Psikolog bulmak benim için her şeyi değiştirdi.",
         person: "Ayşe K., Bireysel Danışan",
       },
       {
@@ -183,7 +183,7 @@ const testimonialContent: Record<"en" | "tr", TestimonialContent> = {
       {
         quote:
           "İmran’ın profesyonel ama sıcak yaklaşımı, zorlu bir geçiş döneminden açıklık ve özenle geçmeme yardımcı oldu.",
-        person: "Elif D., Online Terapi",
+        person: "Elif D., Online psikolojik destek",
       },
     ],
   },
@@ -200,12 +200,12 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
       <Container as="section" className="app-section overflow-hidden">
         <div className="grid gap-10 rounded-[2rem] border border-border bg-gradient-to-br from-background to-surface-soft px-5 py-8 sm:px-8 md:grid-cols-12 md:items-center md:rounded-[3rem] md:px-12 md:py-14">
           <div className="md:col-span-7">
-            <p className="text-xs tracking-[0.18em] text-text-muted uppercase">{t ? "Göç yolculuğunda anlaşılmaya alan açmak" : "Therapy Across Borders, Grounded in Understanding"}</p>
-            <h1 className="mt-5 max-w-3xl break-words text-4xl leading-tight tracking-[-0.02em] sm:text-5xl md:text-7xl">{t ? "Göç yolculuğunda anlaşılmaya alan açmak" : "Therapy Across Borders, Grounded in Understanding"}</h1>
+            <p className="text-xs tracking-[0.18em] text-text-muted uppercase">{t ? "Göç yolculuğunda anlaşılmaya alan açmak" : "Psychological Support Borders, Grounded in Understanding"}</p>
+            <h1 className="mt-5 max-w-3xl break-words text-4xl leading-tight tracking-[-0.02em] sm:text-5xl md:text-7xl">{t ? "Göç yolculuğunda anlaşılmaya alan açmak" : "Psychological Support Borders, Grounded in Understanding"}</h1>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-text-soft md:text-xl">
               {t
-                ? "İngiltere merkezli Odyssey Counselling, dünyanın farklı ülkelerinde yaşayan göçmen Türklere yönelik kültürel olarak duyarlı terapi ve wellbeing desteği sunmaktadır. Uzman Psikolog İmran Altıntop liderliğinde yürütülen çalışmalar; İngiltere, Almanya, Hollanda ve Amerika başta olmak üzere farklı ülkelerde bireyler, topluluklar, dernekler ve kurumlarla yaklaşık 10 yıla yaklaşan deneyime dayanmaktadır. Klinik profesyonelliği göç deneyiminin gerçekliğiyle birleştiren Odyssey Counselling; aidiyet, kimlik, duygusal dayanıklılık ve kültürler arası yaşamın getirdiği zorluklar için güvenli, sakin ve destekleyici bir alan sunar."
-                : "UK-based Odyssey Counselling provides culturally informed therapy and wellbeing support for Turkish-speaking migrants around the world. Led by Expert Psychologist İmran Altıntop, the practice draws on nearly a decade of experience working with individuals, communities, NGOs, and organisations across countries including the UK, Germany, the Netherlands, and the United States. Combining clinical professionalism with lived migrant experience, Odyssey Counselling offers a calm and emotionally safe space to support identity, belonging, emotional resilience, and life across cultures."}
+                ? "İngiltere merkezli Odyssey Counselling, dünyanın farklı ülkelerinde yaşayan göçmen Türklere yönelik kültürel olarak duyarlı psikolojik destek ve wellbeing desteği sunmaktadır. Psikolog İmran Altıntop liderliğinde yürütülen çalışmalar; İngiltere, Almanya, Hollanda ve Amerika başta olmak üzere farklı ülkelerde bireyler, topluluklar, dernekler ve kurumlarla yaklaşık 10 yıla yaklaşan deneyime dayanmaktadır. Profesyonelliği göç deneyiminin gerçekliğiyle birleştiren Odyssey Counselling; aidiyet, kimlik, duygusal dayanıklılık ve kültürler arası yaşamın getirdiği zorluklar için güvenli, sakin ve destekleyici bir alan sunar."
+                : "UK-based Odyssey Counselling provides culturally informed wellbeing support for Turkish-speaking migrants around the world. Led by Psychologist İmran Altıntop, the practice draws on nearly a decade of experience working with individuals, communities, NGOs, and organisations across countries including the UK, Germany, the Netherlands, and the United States. Combining professionalism with lived migrant experience, Odyssey Counselling offers a calm and emotionally safe space to support identity, belonging, emotional resilience, and life across cultures."}
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -226,7 +226,7 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
             <div className="overflow-hidden rounded-[2rem] border border-border/70 bg-surface shadow-[0_10px_40px_-15px_rgba(15,23,42,0.08)]">
               <Image
                 src="/man.png"
-                alt="Minimalist Expert Psychologist office interior with sage green walls and soft morning light."
+                alt="Minimalist Psychologist office interior with sage green walls and soft morning light."
                 className="aspect-[4/5] h-auto w-full object-cover md:aspect-auto md:h-full md:min-h-96"
                 width={720}
                 height={900}
@@ -241,14 +241,14 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
           <div>
             <h2 className="mt-4 text-3xl leading-tight md:text-5xl">
               {t
-                ? "Kültürel sıcaklığın ve klinik profesyonelliğin buluştuğu bir alan."
-                : "A space for human warmth and clinical excellence."}
+                ? "Kültürel sıcaklığın ve profesyonelliğin buluştuğu bir alan."
+                : "A space for human warmth and professionalism."}
             </h2>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-text-soft md:text-lg">
               <p>
                 {t
-                  ? "İngiltere merkezli Odyssey Counselling, dünyanın farklı ülkelerinde yaşayan Türkçe konuşan bireylere psikolojik danışmanlık ve duygusal destek hizmetleri sunmaktadır. Uzman Psikolog İmran Altıntop liderliğinde yürütülen çalışmalar; İngiltere, Almanya, Hollanda ve Amerika başta olmak üzere farklı ülkelerde bireyler, topluluklar, dernekler ve kurumlarla yaklaşık 10 yıla yaklaşan deneyime dayanmaktadır."
-                  : "UK-based Odyssey Counselling provides psychological counselling and emotional wellbeing support for Turkish-speaking individuals living across different countries around the world. Led by Expert Psychologist İmran Altıntop, our work is informed by nearly a decade of experience supporting individuals, communities, associations, and organisations across the United Kingdom, Germany, the Netherlands, the United States, and beyond."}
+                  ? "İngiltere merkezli Odyssey Counselling, dünyanın farklı ülkelerinde yaşayan Türkçe konuşan bireylere psikolojik danışmanlık ve duygusal destek hizmetleri sunmaktadır. Psikolog İmran Altıntop liderliğinde yürütülen çalışmalar; İngiltere, Almanya, Hollanda ve Amerika başta olmak üzere farklı ülkelerde bireyler, topluluklar, dernekler ve kurumlarla yaklaşık 10 yıla yaklaşan deneyime dayanmaktadır."
+                  : "UK-based Odyssey Counselling provides psychological counselling and emotional wellbeing support for Turkish-speaking individuals living across different countries around the world. Led by Psychologist İmran Altıntop, our work is informed by nearly a decade of experience supporting individuals, communities, associations, and organisations across the United Kingdom, Germany, the Netherlands, the United States, and beyond."}
               </p>
               <p>
                 {t
@@ -306,14 +306,14 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
         <Link
           href={withLocale("/therapist")}
           className="block rounded-[2rem] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          aria-label={t ? "Uzman Psikolog İmran Altıntop profilini aç" : "Open Expert Psychologist İmran Altıntop profile"}
+          aria-label={t ? "Psikolog İmran Altıntop profilini aç" : "Open Psychologist İmran Altıntop profile"}
         >
           <div className="grid gap-10 rounded-[2rem] border border-border bg-surface-soft p-8 transition-colors hover:bg-surface md:grid-cols-12 md:p-12">
             <div className="md:col-span-5">
               <div className="overflow-hidden rounded-[2rem] border border-border/70">
                 <Image
                   src="/imran.png"
-                  alt={t ? "Uzman Psikolog İmran Altıntop'un profesyonel portresi." : "Professional portrait of Expert Psychologist İmran Altıntop."}
+                  alt={t ? "Psikolog İmran Altıntop'un profesyonel portresi." : "Professional portrait of Psychologist İmran Altıntop."}
                   className="aspect-[4/5] h-auto w-full object-cover md:aspect-auto md:h-full md:min-h-96"
                   width={720}
                   height={900}
@@ -321,27 +321,27 @@ export function HomepageSections({ locale = "en" }: { locale?: "en" | "tr" }) {
               </div>
             </div>
             <div className="md:col-span-7">
-              <p className="text-xs tracking-[0.18em] text-text-muted uppercase">{t ? "Uzman Psikolog ile tanışın" : "Meet Expert Psychologist"}</p>
-              <h2 className="mt-4 text-3xl md:text-5xl">{t ? "Uzman Psikolog İmran Altıntop ile Tanışın" : "Meet Expert Psychologist İmran Altıntop"}</h2>
+              <p className="text-xs tracking-[0.18em] text-text-muted uppercase">{t ? "Psikolog ile tanışın" : "Meet Psychologist"}</p>
+              <h2 className="mt-4 text-3xl md:text-5xl">{t ? "Psikolog İmran Altıntop ile Tanışın" : "Meet Psychologist İmran Altıntop"}</h2>
               <div className="mt-6 space-y-4 text-base leading-relaxed text-text-soft md:text-lg">
                 <p>
                   {t
-                    ? "İmran Altıntop, göçmenlerle, topluluklarla ve uluslararası wellbeing projeleriyle geçen 10 yılı aşkın deneyimiyle; klinik uzmanlığı göç deneyiminin gerçekliğiyle birleştiren kültürel olarak duyarlı bir terapi yaklaşımı sunmaktadır."
-                    : "With over a decade of experience working with migrants, communities, and international wellbeing projects, İmran offers culturally informed therapy shaped by both clinical expertise and lived migrant experience."}
+                    ? "İmran Altıntop, göçmenlerle, topluluklarla ve uluslararası wellbeing projeleriyle geçen 10 yılı aşkın deneyimiyle; psikolojik uzmanlığı göç deneyiminin gerçekliğiyle birleştiren kültürel olarak duyarlı bir psikolojik destek yaklaşımı sunmaktadır."
+                    : "With over a decade of experience working with migrants, communities, and international wellbeing projects, İmran offers culturally informed psychological support shaped by lived migrant experience."}
                 </p>
                 <p>
                   {t
-                    ? "İngiltere’de yaşayan birinci nesil bir göçmen olarak, kültürler arasında hayat kurmanın duygusal zorluklarını yakından bilir ve güvenli, yapılandırılmış ve duygusal olarak destekleyici bir terapi alanı oluşturmayı hedefler."
+                    ? "İngiltere’de yaşayan birinci nesil bir göçmen olarak, kültürler arasında hayat kurmanın duygusal zorluklarını yakından bilir ve güvenli, yapılandırılmış ve duygusal olarak destekleyici bir psikolojik destek alanı oluşturmayı hedefler."
                     : "As a first-generation migrant living in the UK, she understands the emotional complexity of building life between cultures and provides a calm, structured, and emotionally safe therapeutic space."}
                 </p>
               </div>
               <div className="mt-8 grid gap-4 border-t border-border pt-6 sm:grid-cols-2">
                 <div>
-                  <p className="text-sm font-medium text-primary">MSc Clinical Psychology</p>
+                  <p className="text-sm font-medium text-primary">MA Developmental Psychology</p>
                   <p className="mt-1 text-sm text-text-muted">{t ? "Ege Üniversitesi" : "Ege University"}</p>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-primary">{t ? "Üyelik" : "Member of"}</p>
+                  <p className="text-sm font-medium text-primary">{t ? "Üyelik" : "Graduate Member of"}</p>
                   <p className="mt-1 text-sm text-text-muted">The British Psychological Society</p>
                 </div>
               </div>

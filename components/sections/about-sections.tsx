@@ -30,7 +30,7 @@ const contentByLocale: Record<Locale, Record<TabKey, TabContent>> = {
   tr: {
     about: {
       title: "Hakkımızda",
-      body: "Odyssey Danışmanlık, bireyin yaşamını doğum öncesi dönemden yaşlılığa kadar bütüncül bir bakış açısıyla ele alır. Sadece bireyin yaşadığı sorunlara değil; aile, okul, iş hayatı, toplumsal çevre ve kültürel uyum süreçlerine de odaklanır. Böylece daha kalıcı ve etkili çözümler üretmeyi hedefler. Özellikle göçmen ve sığınmacı bireylerin yaşadığı uyum süreci, travma, kaygı, kimlik çatışması ve aile içi zorluklar konusunda uzman desteği sunmaktadır.",
+      body: "Odyssey Danışmanlık, bireyin yaşamını doğum öncesi dönemden yaşlılığa kadar bütüncül bir bakış açısıyla ele alır. Sadece bireyin yaşadığı sorunlara değil; aile, okul, iş hayatı, toplumsal çevre ve kültürel uyum süreçlerine de odaklanır. Böylece daha kalıcı ve etkili çözümler üretmeyi hedefler. Özellikle göçmen ve sığınmacı bireylerin yaşadığı uyum süreci, kaygı, kimlik çatışması ve aile içi zorluklar konusunda uzman desteği sunmaktadır.",
     },
     mission: {
       title: "Misyonumuz",
@@ -38,7 +38,7 @@ const contentByLocale: Record<Locale, Record<TabKey, TabContent>> = {
     },
     vision: {
       title: "Vizyonumuz",
-      body: "Leicester başta olmak üzere Birleşik Krallık genelinde gelişim psikolojisi ve yetişkin psikolojisi alanında güvenilir, yenilikçi ve öncü bir danışmanlık merkezi olmak.",
+      body: "Leicester başta olmak üzere Birleşik Krallık genelinde gelişim psikolojisi ve yetişkin psikolojisi alanında güvenilir, yenilikçi ve öncü bir destek merkezi olmak.",
     },
   },
 };
@@ -59,7 +59,7 @@ export function AboutSections({ locale }: { locale: Locale }) {
           <h1 className="mt-4 text-4xl text-primary md:text-6xl">{copy.about.title}</h1>
           <p className="mt-6 text-base leading-relaxed text-text-soft md:text-lg">
             {locale === "tr"
-              ? "Yaklaşımımız, bireyin hayatındaki psikolojik, kültürel ve sosyal bağlamları birlikte değerlendirerek güvenli ve sürdürülebilir bir iyileşme süreci oluşturur."
+              ? "Yaklaşımımız, bireyin hayatındaki psikolojik, kültürel ve sosyal bağlamları birlikte değerlendirerek güvenli ve sürdürülebilir bir destek süreci oluşturur."
               : "Our care model considers psychological, cultural, and social contexts together, helping individuals move forward with structured and sustainable support."}
           </p>
         </header>

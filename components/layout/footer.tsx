@@ -22,7 +22,7 @@ const footerContent = {
   },
   tr: {
     description:
-      "Gizliliğe derin saygı ve sakin, profesyonellikle sunulan iki dilli Türkçe-İngilizce danışmanlık.",
+      "Gizliliğe derin saygı ve sakin, profesyonellikle sunulan danışmanlık.",
     navigationLabel: "Alt bilgi bağlantıları",
     navigationHeading: "Gezinme",
     links: {

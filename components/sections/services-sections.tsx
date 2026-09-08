@@ -23,17 +23,17 @@ const contentByLocale: Record<Locale, PageContent> = {
   tr: {
     heading: "Hizmetlerimiz",
     intro:
-      "Odyssey Danışmanlık'ta bireyler, aileler ve kurumlar için psikolojik iyi oluşu güçlendiren, kültürel duyarlılığa sahip profesyonel danışmanlık hizmetleri sunuyoruz.",
+      "Odyssey Danışmanlık'ta bireyler, aileler ve kurumlar için psikolojik iyi oluşu güçlendiren, kültürel duyarlılığa sahip profesyonel destek hizmetleri sunuyoruz.",
     sections: {
       individual: {
-        title: "Bireysel Danışmanlık",
+        title: "Bireysel Destek",
         description:
-          "Bireyin duygusal, psikolojik ve sosyal iyi oluşunu desteklemeye yönelik profesyonel danışmanlık hizmetleri sunuyoruz.",
+          "Bireyin duygusal, psikolojik ve sosyal iyi oluşunu desteklemeye yönelik profesyonel destek hizmetleri sunuyoruz.",
         items: [
           "Kaygı, stres ve duygu yönetimi",
           "Depresif duygu durum ve motivasyon desteği",
           "Özgüven, benlik saygısı ve öz farkındalık çalışmaları",
-          "Travma, kayıp ve yas süreci desteği",
+          "Kayıp ve yas süreci desteği",
           "İlişki sorunları ve kişilerarası iletişim güçlükleri",
           "Öfke kontrolü ve duygu düzenleme becerileri",
           "Tükenmişlik sendromu, iş yaşamı stresi ve yaşam dengesi",
@@ -65,7 +65,7 @@ const contentByLocale: Record<Locale, PageContent> = {
           "Yeni ülkeye uyum süreci, kültürel geçiş ve yaşam değişikliklerine destek",
           "Göç sonrası kaygı, stres, yalnızlık ve belirsizlikle başa çıkma",
           "Kimlik, aidiyet ve iki kültür arasında denge kurma süreçleri",
-          "Travmatik göç deneyimleri ve psikolojik dayanıklılık desteği",
+          "Zorlayıcı göç deneyimleri ve psikolojik dayanıklılık desteği",
           "Çocuklar ve ergenlerde okul, arkadaş çevresi ve sosyal uyum desteği",
           "Aile içi kuşak çatışmaları, ebeveynlik rolleri ve iletişim desteği",
           "Dil bariyeri, sosyal izolasyon ve toplumsal uyum sürecine psikolojik destek",
@@ -83,7 +83,6 @@ const contentByLocale: Record<Locale, PageContent> = {
           "Stres yönetimi, tükenmişlik önleme ve dayanıklılık eğitimleri",
           "Göçmen ve dezavantajlı topluluklara yönelik sosyal uyum projeleri",
           "Seminer, atölye çalışmaları ve uzman konuşmaları",
-          "Travma bilgili yaklaşım ve kapsayıcı hizmet modelleri danışmanlığı",
         ],
       },
     },

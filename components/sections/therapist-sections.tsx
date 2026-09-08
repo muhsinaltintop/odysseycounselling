@@ -23,10 +23,10 @@ const contentByLocale: Record<Locale, TherapistContent> = {
   en: {
     label: "Psychologist",
     title: "About the Psychologist",
-    intro: "A counselling practice grounded in academic depth and extensive field experience, with a focus on migrant wellbeing.",
+    intro: "A psychological support grounded in academic depth and extensive field experience, with a focus on migrant wellbeing.",
     paragraphs: [
       "After completing my Psychology degree in 2010, I continued my academic studies in the fields of Social Work and Developmental Psychology. I completed my Master's and PhD degrees in Social Work, as well as a Master's degree in Developmental Psychology.",
-      "Throughout my 16+ years of professional experience, I have worked in various areas including individual counselling, academic research, and project management, with a particular focus on migrant communities. For the past 5 years in the UK, I have been providing one-to-one psychological counselling for migrants while also taking an active role in national and international projects that support integration and adaptation processes.",
+      "Throughout my 16+ years of professional experience, I have worked in various areas including individual psychological support, academic research, and project management, with a particular focus on migrant communities. For the past 5 years in the UK, I have been providing one-to-one psychological support for migrants while also taking an active role in national and international projects that support integration and adaptation processes.",
       "In my work, I draw on my academic background in psychology, developmental psychology and social work, together with my professional and community-based experience, to provide psychological wellbeing support, psychoeducation and preventative guidance. My aim is to provide a safe and supportive space where individuals and families can better understand the challenges they may face at different stages of life, strengthen their coping skills, improve communication and identify practical ways forward. Where a person's needs require specialist assessment, clinical treatment or another form of professional intervention beyond the scope of my services, I support them in accessing or being referred to the appropriate professional or service.",
     ],
   },

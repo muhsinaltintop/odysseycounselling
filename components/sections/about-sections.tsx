@@ -16,7 +16,7 @@ const contentByLocale: Record<Locale, Record<TabKey, TabContent>> = {
   en: {
     about: {
       title: "About Us",
-      body: "Odyssey Counselling adopts a holistic approach to human wellbeing, supporting individuals from the prenatal period through older adulthood. We focus not only on the challenges experienced by the individual, but also on the influence of family relationships, education, working life, social environments, and cultural adaptation processes. Through this broader perspective, we aim to create more sustainable and effective pathways to wellbeing. We offer specialist support for migrants and refugees experiencing adjustment difficulties, trauma, anxiety, identity-related challenges, and family-related concerns.",
+      body: "Odyssey Counselling adopts a holistic approach to human wellbeing, supporting individuals from the prenatal period through older adulthood. We focus not only on the challenges experienced by the individual, but also on the influence of family relationships, education, working life, social environments, and cultural adaptation processes. Through this broader perspective, we aim to create more sustainable and effective pathways to wellbeing. We offer specialist support for migrants and refugees experiencing adjustment difficulties, anxiety, identity-related challenges, and family-related concerns.",
     },
     mission: {
       title: "Our Mission",

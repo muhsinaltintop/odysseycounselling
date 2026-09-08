@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/container";
 const footerContent = {
   en: {
     description:
-      "Bilingual Turkish-English counselling delivered with calm, professional and deep respect for confidentiality.",
+      "Psychological support delivered with calm, professional and deep respect for confidentiality.",
     navigationLabel: "Footer links",
     navigationHeading: "Navigate",
     links: {

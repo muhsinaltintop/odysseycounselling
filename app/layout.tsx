@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: "%s | Odyssey Counselling",
   },
   description:
-    "Premium bilingual Turkish-English counselling in the UK with calm, confidential, and professional support.",
+    "Premium Psychological Support in the UK with calm, confidential, and professional support.",
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png" }],
     apple: [{ url: "/favicon.png", type: "image/png" }],

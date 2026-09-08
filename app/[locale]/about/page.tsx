@@ -6,7 +6,7 @@ import { type Locale, defaultLocale, isLocale } from "@/i18n/config";
 export const metadata: Metadata = {
   title: "About Odyssey Counselling",
   description:
-    "Learn about Odyssey Counselling's holistic approach, mission, and vision for bilingual psychological support across the UK.",
+    "Learn about Odyssey Counselling's holistic approach, mission, and vision for psychological support across the UK.",
 };
 
 export default async function AboutPage({

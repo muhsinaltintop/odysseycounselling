@@ -16,7 +16,7 @@ const contentByLocale: Record<Locale, Record<TabKey, TabContent>> = {
   en: {
     about: {
       title: "About Us",
-      body: "Odyssey Counselling adopts a holistic approach to human wellbeing, supporting individuals from the prenatal period through older adulthood. We focus not only on the challenges experienced by the individual, but also on the influence of family relationships, education, working life, social environments, and cultural adaptation processes. Through this broader perspective, we aim to create more sustainable and effective pathways to wellbeing. We offer specialist support for migrants and refugees experiencing adjustment difficulties, trauma, anxiety, identity-related challenges, and family-related concerns.",
+      body: "Odyssey Counselling adopts a holistic approach to human wellbeing, supporting individuals from the prenatal period through older adulthood. We focus not only on the challenges experienced by the individual, but also on the influence of family relationships, education, working life, social environments, and cultural adaptation processes. Through this broader perspective, we aim to create more sustainable and effective pathways to wellbeing. We offer specialist support for migrants and refugees experiencing adjustment difficulties, anxiety, identity-related challenges, and family-related concerns.",
     },
     mission: {
       title: "Our Mission",
@@ -30,7 +30,7 @@ const contentByLocale: Record<Locale, Record<TabKey, TabContent>> = {
   tr: {
     about: {
       title: "Hakkımızda",
-      body: "Odyssey Danışmanlık, bireyin yaşamını doğum öncesi dönemden yaşlılığa kadar bütüncül bir bakış açısıyla ele alır. Sadece bireyin yaşadığı sorunlara değil; aile, okul, iş hayatı, toplumsal çevre ve kültürel uyum süreçlerine de odaklanır. Böylece daha kalıcı ve etkili çözümler üretmeyi hedefler. Özellikle göçmen ve sığınmacı bireylerin yaşadığı uyum süreci, travma, kaygı, kimlik çatışması ve aile içi zorluklar konusunda uzman desteği sunmaktadır.",
+      body: "Odyssey Danışmanlık, bireyin yaşamını doğum öncesi dönemden yaşlılığa kadar bütüncül bir bakış açısıyla ele alır. Sadece bireyin yaşadığı sorunlara değil; aile, okul, iş hayatı, toplumsal çevre ve kültürel uyum süreçlerine de odaklanır. Böylece daha kalıcı ve etkili çözümler üretmeyi hedefler. Özellikle göçmen ve sığınmacı bireylerin yaşadığı uyum süreci, kaygı, kimlik çatışması ve aile içi zorluklar konusunda uzman desteği sunmaktadır.",
     },
     mission: {
       title: "Misyonumuz",
@@ -38,7 +38,7 @@ const contentByLocale: Record<Locale, Record<TabKey, TabContent>> = {
     },
     vision: {
       title: "Vizyonumuz",
-      body: "Leicester başta olmak üzere Birleşik Krallık genelinde gelişim psikolojisi ve yetişkin psikolojisi alanında güvenilir, yenilikçi ve öncü bir danışmanlık merkezi olmak.",
+      body: "Leicester başta olmak üzere Birleşik Krallık genelinde gelişim psikolojisi ve yetişkin psikolojisi alanında güvenilir, yenilikçi ve öncü bir destek merkezi olmak.",
     },
   },
 };
@@ -59,7 +59,7 @@ export function AboutSections({ locale }: { locale: Locale }) {
           <h1 className="mt-4 text-4xl text-primary md:text-6xl">{copy.about.title}</h1>
           <p className="mt-6 text-base leading-relaxed text-text-soft md:text-lg">
             {locale === "tr"
-              ? "Yaklaşımımız, bireyin hayatındaki psikolojik, kültürel ve sosyal bağlamları birlikte değerlendirerek güvenli ve sürdürülebilir bir iyileşme süreci oluşturur."
+              ? "Yaklaşımımız, bireyin hayatındaki psikolojik, kültürel ve sosyal bağlamları birlikte değerlendirerek güvenli ve sürdürülebilir bir destek süreci oluşturur."
               : "Our care model considers psychological, cultural, and social contexts together, helping individuals move forward with structured and sustainable support."}
           </p>
         </header>
